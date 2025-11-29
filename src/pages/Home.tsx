@@ -45,92 +45,73 @@ const Home = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Animated background gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-background via-muted/20 to-background" />
-        <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }} />
-        </div>
-
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <section className="relative min-h-screen flex items-center justify-center">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-32 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-16 items-center max-w-7xl mx-auto">
             {/* Text Content */}
-            <div className="text-center lg:text-left space-y-8 animate-fade-in">
-              <div className="inline-flex items-center px-4 py-2 bg-primary/10 border border-primary/30 rounded-full text-sm text-primary font-medium">
-                <Sparkles className="w-4 h-4 mr-2" />
-                Coming Soon
+            <div className="text-center lg:text-left space-y-8">
+              <div className="inline-flex items-center px-3 py-1.5 bg-muted border border-border rounded-md text-xs text-muted-foreground font-medium">
+                <Sparkles className="w-3 h-3 mr-1.5" />
+                Coming Mid-2026
               </div>
 
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight">
-                <span className="text-gradient-neon">MindMesh</span>
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-semibold leading-tight tracking-tight">
+                MindMesh
               </h1>
 
-              <p className="text-xl sm:text-2xl text-foreground/90 font-medium">
+              <p className="text-xl sm:text-2xl text-foreground/80">
                 Your unified hub for academic and personal growth
               </p>
 
-              <p className="text-base sm:text-lg text-muted-foreground max-w-2xl">
-                MindMesh is an AI-powered student workspace bringing together planning, learning, 
-                networking, and opportunities in one seamless platform. Join the waitlist to be 
-                notified when we launch.
+              <p className="text-base text-muted-foreground max-w-xl">
+                An AI-powered student workspace bringing together planning, learning, 
+                networking, and opportunities in one seamless platform.
               </p>
 
               <EmailCapture variant="hero" />
 
-              <div className="flex flex-wrap gap-6 text-sm text-muted-foreground justify-center lg:justify-start">
-                <div className="flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-                  <span>1,000+ Beta Users</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-secondary rounded-full animate-pulse" />
-                  <span>150+ Students Helped</span>
-                </div>
+              <div className="flex flex-wrap gap-6 text-sm text-muted-foreground justify-center lg:justify-start pt-4">
+                <span>1,000+ Beta Users</span>
+                <span className="text-border">•</span>
+                <span>150+ Students Helped</span>
               </div>
             </div>
 
             {/* Phone Mockup */}
-            <div className="relative flex justify-center lg:justify-end animate-fade-in" style={{ animationDelay: "0.3s" }}>
-              <div className="relative animate-float">
-                <div className="absolute inset-0 bg-primary/30 blur-3xl rounded-full" />
-                <img
-                  src={heroPhone}
-                  alt="MindMesh App Interface"
-                  className="relative z-10 w-full max-w-md lg:max-w-lg drop-shadow-2xl"
-                />
-              </div>
+            <div className="relative flex justify-center lg:justify-end">
+              <img
+                src={heroPhone}
+                alt="MindMesh App Interface"
+                className="w-full max-w-md lg:max-w-lg"
+              />
             </div>
           </div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section className="section-soft py-24 relative">
+      <section className="section-soft py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-soft-section-foreground">
-              Powerful Features for Students
+          <div className="text-center mb-16 max-w-2xl mx-auto">
+            <h2 className="text-3xl sm:text-4xl font-semibold mb-4 text-soft-section-foreground">
+              Everything you need in one place
             </h2>
-            <p className="text-lg text-soft-section-foreground/70 max-w-2xl mx-auto">
-              Everything you need to excel academically and grow personally, all in one place.
+            <p className="text-base text-soft-section-foreground/60">
+              Purpose-built tools to help you succeed academically and grow personally.
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {features.map((feature, index) => {
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {features.map((feature) => {
               const Icon = feature.icon;
               return (
                 <div
                   key={feature.title}
-                  className="group p-6 bg-background/50 backdrop-blur-sm rounded-2xl border border-border hover:border-primary/50 transition-all duration-300 hover-lift animate-fade-in"
-                  style={{ animationDelay: `${index * 0.1}s` }}
+                  className="p-6 bg-background rounded-lg border border-border"
                 >
-                  <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors duration-300">
-                    <Icon className="w-6 h-6 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                  <p className="text-muted-foreground">{feature.description}</p>
+                  <Icon className="w-5 h-5 text-primary mb-4" />
+                  <h3 className="text-lg font-medium mb-2">{feature.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
                 </div>
               );
             })}
@@ -139,15 +120,14 @@ const Home = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-secondary/5 to-accent/10" />
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-3xl mx-auto text-center space-y-8 animate-fade-in">
-            <h2 className="text-4xl sm:text-5xl font-bold">
-              Ready to Transform Your Student Experience?
+      <section className="py-24">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-2xl mx-auto text-center space-y-6">
+            <h2 className="text-3xl sm:text-4xl font-semibold">
+              Get notified when we launch
             </h2>
-            <p className="text-xl text-muted-foreground">
-              Join thousands of students preparing for the future of education.
+            <p className="text-base text-muted-foreground">
+              Join the waitlist for early access.
             </p>
             <EmailCapture />
           </div>

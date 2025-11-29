@@ -35,56 +35,55 @@ const Founders = () => {
     <div className="min-h-screen pt-24 pb-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Hero Section */}
-        <div className="max-w-4xl mx-auto text-center mb-20 animate-fade-in">
-          <h1 className="text-5xl sm:text-6xl font-bold mb-6">
-            Meet the <span className="text-gradient-neon">Founders</span>
+        <div className="max-w-3xl mx-auto text-center mb-20">
+          <h1 className="text-4xl sm:text-5xl font-semibold mb-6">
+            Meet the Founders
           </h1>
-          <p className="text-xl text-muted-foreground leading-relaxed">
+          <p className="text-lg text-muted-foreground leading-relaxed">
             A team of innovators committed to transforming education through accessible AI technology.
           </p>
         </div>
 
         {/* Founders Grid */}
-        <div className="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {founders.map((founder, index) => (
+        <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {founders.map((founder) => (
             <div
               key={founder.name}
-              className="group bg-card rounded-3xl overflow-hidden border border-border hover:border-primary/50 transition-all duration-500 hover-lift animate-fade-in"
-              style={{ animationDelay: `${index * 0.2}s` }}
+              className="bg-card rounded-lg overflow-hidden border border-border"
             >
               {/* Image */}
               <div className="aspect-square overflow-hidden bg-muted">
                 <img
                   src={founder.image}
                   alt={founder.name}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  className="w-full h-full object-cover"
                 />
               </div>
 
               {/* Content */}
-              <div className="p-8 space-y-4">
+              <div className="p-6 space-y-4">
                 <div>
-                  <h3 className="text-2xl font-bold mb-1">{founder.name}</h3>
-                  <p className="text-primary font-medium">{founder.role}</p>
+                  <h3 className="text-xl font-semibold mb-1">{founder.name}</h3>
+                  <p className="text-sm text-primary">{founder.role}</p>
                 </div>
 
-                <p className="text-muted-foreground leading-relaxed">{founder.bio}</p>
+                <p className="text-sm text-muted-foreground leading-relaxed">{founder.bio}</p>
 
                 {/* Social Links */}
-                <div className="flex items-center space-x-4 pt-4">
+                <div className="flex items-center space-x-3 pt-2">
                   <a
                     href={founder.linkedin}
-                    className="flex items-center justify-center w-10 h-10 bg-muted rounded-full hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
+                    className="w-9 h-9 bg-muted rounded-md flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"
                     aria-label="LinkedIn"
                   >
-                    <Linkedin className="w-5 h-5" />
+                    <Linkedin className="w-4 h-4" />
                   </a>
                   <a
                     href={`mailto:${founder.email}`}
-                    className="flex items-center justify-center w-10 h-10 bg-muted rounded-full hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
+                    className="w-9 h-9 bg-muted rounded-md flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"
                     aria-label="Email"
                   >
-                    <Mail className="w-5 h-5" />
+                    <Mail className="w-4 h-4" />
                   </a>
                 </div>
               </div>
@@ -93,14 +92,14 @@ const Founders = () => {
         </div>
 
         {/* Bottom CTA */}
-        <div className="max-w-3xl mx-auto text-center mt-20 p-8 bg-card/50 backdrop-blur-sm rounded-3xl border border-border animate-fade-in">
-          <h2 className="text-3xl font-bold mb-4">Want to Join Our Journey?</h2>
-          <p className="text-muted-foreground mb-6">
+        <div className="max-w-2xl mx-auto text-center mt-20 p-8 bg-card rounded-lg border border-border">
+          <h2 className="text-2xl font-semibold mb-3">Want to Join Our Journey?</h2>
+          <p className="text-muted-foreground mb-6 text-sm">
             We're always looking for talented individuals passionate about education and technology.
           </p>
           <a
             href="mailto:careers@mindmesh.app"
-            className="inline-flex items-center px-6 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-colors duration-300"
+            className="inline-flex items-center px-5 py-2.5 bg-primary text-primary-foreground rounded-md text-sm font-medium hover:bg-primary/90 transition-colors"
           >
             <Mail className="w-4 h-4 mr-2" />
             careers@mindmesh.app

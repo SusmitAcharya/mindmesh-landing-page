@@ -28,20 +28,20 @@ const Story = () => {
     <div className="min-h-screen pt-24 pb-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Hero Section */}
-        <div className="max-w-4xl mx-auto text-center mb-20 animate-fade-in">
-          <h1 className="text-5xl sm:text-6xl font-bold mb-6">
-            Our <span className="text-gradient-neon">Story</span>
+        <div className="max-w-3xl mx-auto text-center mb-20">
+          <h1 className="text-4xl sm:text-5xl font-semibold mb-6">
+            Our Story
           </h1>
-          <p className="text-xl text-muted-foreground leading-relaxed">
+          <p className="text-lg text-muted-foreground leading-relaxed">
             The journey of building an inclusive AI-powered workspace for students worldwide.
           </p>
         </div>
 
         {/* Origin Story */}
-        <div className="max-w-5xl mx-auto mb-24">
-          <div className="bg-card rounded-3xl p-8 sm:p-12 border border-border animate-fade-in" style={{ animationDelay: "0.2s" }}>
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6">Where It All Began</h2>
-            <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
+        <div className="max-w-4xl mx-auto mb-24">
+          <div className="bg-card rounded-lg p-8 sm:p-10 border border-border">
+            <h2 className="text-2xl font-semibold mb-6">Where It All Began</h2>
+            <div className="space-y-4 text-base text-muted-foreground leading-relaxed">
               <p>
                 MindMesh was born from a simple observation: students today juggle dozens of apps, 
                 platforms, and tools to manage their academic lives—calendars for planning, separate 
@@ -67,26 +67,25 @@ const Story = () => {
 
         {/* Timeline */}
         <div className="mb-24">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12 animate-fade-in">
+          <h2 className="text-2xl font-semibold text-center mb-12">
             Our Journey
           </h2>
-          <div className="max-w-4xl mx-auto space-y-12">
-            {timeline.map((item, index) => {
+          <div className="max-w-3xl mx-auto space-y-10">
+            {timeline.map((item) => {
               const Icon = item.icon;
               return (
                 <div
                   key={item.title}
-                  className="flex gap-6 animate-fade-in"
-                  style={{ animationDelay: `${index * 0.15}s` }}
+                  className="flex gap-6"
                 >
                   <div className="flex-shrink-0">
-                    <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center border border-primary/20">
-                      <Icon className="w-8 h-8 text-primary" />
+                    <div className="w-12 h-12 bg-muted rounded-lg flex items-center justify-center">
+                      <Icon className="w-5 h-5 text-primary" />
                     </div>
                   </div>
                   <div className="flex-1 pt-1">
-                    <h3 className="text-2xl font-bold mb-3">{item.title}</h3>
-                    <p className="text-lg text-muted-foreground leading-relaxed">
+                    <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
                       {item.description}
                     </p>
                   </div>
@@ -97,11 +96,11 @@ const Story = () => {
         </div>
 
         {/* Vision Section */}
-        <div className="section-soft rounded-3xl p-8 sm:p-12 animate-fade-in">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-soft-section-foreground">
+        <div className="section-soft rounded-lg p-8 sm:p-10">
+          <h2 className="text-2xl font-semibold mb-6 text-soft-section-foreground">
             Building for Tomorrow
           </h2>
-          <div className="space-y-4 text-lg text-soft-section-foreground/80 leading-relaxed">
+          <div className="space-y-4 text-base text-soft-section-foreground/80 leading-relaxed">
             <p>
               Our vision extends far beyond a mobile app. We're building infrastructure for the 
               future of education—one where AI augments human learning, where opportunities find 
