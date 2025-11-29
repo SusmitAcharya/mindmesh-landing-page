@@ -34,7 +34,7 @@ const Navigation = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20">
           <Link to="/" className="flex items-center space-x-2">
-            <span className="text-2xl sm:text-3xl font-bold text-gradient-neon">
+            <span className="text-xl sm:text-2xl font-semibold">
               MindMesh
             </span>
           </Link>

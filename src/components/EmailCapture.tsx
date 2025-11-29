@@ -24,7 +24,7 @@ const EmailCapture = ({ variant = "default" }: { variant?: "default" | "hero" })
 
   return (
     <form onSubmit={handleSubmit} className={`w-full ${isHero ? "max-w-md" : "max-w-sm"}`}>
-      <div className="flex flex-col sm:flex-row gap-3">
+      <div className="flex flex-col sm:flex-row gap-2">
         <div className="relative flex-1">
           <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
           <Input
@@ -33,21 +33,13 @@ const EmailCapture = ({ variant = "default" }: { variant?: "default" | "hero" })
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className={`pl-10 ${
-              isHero
-                ? "h-12 bg-card/50 backdrop-blur-sm border-primary/30 focus:border-primary"
-                : "h-11"
-            }`}
+            className="pl-10 h-11"
           />
         </div>
         <Button
           type="submit"
           disabled={isSubmitting}
-          className={
-            isHero
-              ? "h-12 px-8 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold glow-neon"
-              : "h-11 px-6"
-          }
+          className="h-11 px-6"
         >
           {isSubmitting ? "Submitting..." : "Notify Me"}
         </Button>

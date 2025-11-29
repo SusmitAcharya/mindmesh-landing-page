@@ -8,62 +8,52 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Dark base theme */
-    --background: 220 35% 6%;
-    --foreground: 220 15% 96%;
+    /* Dark minimal theme */
+    --background: 222 15% 8%;
+    --foreground: 210 10% 92%;
 
-    --card: 220 30% 10%;
-    --card-foreground: 220 15% 96%;
+    --card: 222 12% 11%;
+    --card-foreground: 210 10% 92%;
 
-    --popover: 220 30% 10%;
-    --popover-foreground: 220 15% 96%;
+    --popover: 222 12% 11%;
+    --popover-foreground: 210 10% 92%;
 
-    /* Neon electric blue primary */
-    --primary: 200 100% 60%;
-    --primary-foreground: 220 35% 6%;
+    /* Muted blue primary */
+    --primary: 210 30% 55%;
+    --primary-foreground: 210 10% 98%;
 
-    /* Purple/magenta secondary */
-    --secondary: 280 75% 65%;
-    --secondary-foreground: 220 35% 6%;
+    /* Subtle secondary */
+    --secondary: 220 12% 18%;
+    --secondary-foreground: 210 10% 92%;
 
-    /* Muted dark surfaces */
-    --muted: 220 25% 18%;
-    --muted-foreground: 220 15% 70%;
+    /* Muted surfaces */
+    --muted: 220 12% 15%;
+    --muted-foreground: 220 8% 60%;
 
-    /* Neon cyan accent */
-    --accent: 180 100% 55%;
-    --accent-foreground: 220 35% 6%;
+    /* Minimal accent */
+    --accent: 215 25% 50%;
+    --accent-foreground: 210 10% 98%;
 
-    /* Soft light section background */
-    --soft-section: 230 45% 96%;
-    --soft-section-foreground: 220 35% 12%;
+    /* Light section background */
+    --soft-section: 210 15% 96%;
+    --soft-section-foreground: 222 15% 12%;
 
-    --destructive: 0 75% 60%;
-    --destructive-foreground: 220 15% 96%;
+    --destructive: 0 60% 55%;
+    --destructive-foreground: 210 10% 98%;
 
-    --border: 220 25% 22%;
-    --input: 220 25% 18%;
-    --ring: 200 100% 60%;
+    --border: 220 12% 18%;
+    --input: 220 12% 15%;
+    --ring: 210 30% 55%;
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;
 
-    /* Gradients */
-    --gradient-neon: linear-gradient(135deg, hsl(200 100% 60%), hsl(180 100% 55%));
-    --gradient-purple: linear-gradient(135deg, hsl(280 75% 65%), hsl(300 80% 70%));
-    --gradient-hero: linear-gradient(180deg, hsl(220 35% 6%), hsl(220 40% 10%));
-    --gradient-soft: linear-gradient(180deg, hsl(230 45% 96%), hsl(240 40% 98%));
-    
-    /* Glows */
-    --glow-neon: 0 0 30px hsl(200 100% 60% / 0.5);
-    --glow-purple: 0 0 30px hsl(280 75% 65% / 0.4);
-    
     /* Transitions */
-    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: all 0.3s ease;
   }
 }
 
 @layer base {
-  @import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
   * {
     @apply border-border;
@@ -72,47 +62,18 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground;
     font-family: 'Inter', sans-serif;
+    font-weight: 400;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Sora', sans-serif;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
   }
 }
 
 @layer utilities {
-  .text-gradient-neon {
-    @apply bg-clip-text text-transparent;
-    background-image: var(--gradient-neon);
-  }
-
-  .text-gradient-purple {
-    @apply bg-clip-text text-transparent;
-    background-image: var(--gradient-purple);
-  }
-
-  .glow-neon {
-    box-shadow: var(--glow-neon);
-  }
-
-  .glow-purple {
-    box-shadow: var(--glow-purple);
-  }
-
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
-  }
-
-  @keyframes float {
-    0%, 100% {
-      transform: translateY(0px);
-    }
-    50% {
-      transform: translateY(-20px);
-    }
-  }
-
   .hover-lift {
-    @apply transition-all duration-300 hover:-translate-y-2;
+    @apply transition-transform duration-300 hover:-translate-y-1;
   }
 
   .section-soft {

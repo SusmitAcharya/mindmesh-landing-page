@@ -28,21 +28,21 @@ const About = () => {
     <div className="min-h-screen pt-24 pb-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Hero Section */}
-        <div className="max-w-4xl mx-auto text-center mb-20 animate-fade-in">
-          <h1 className="text-5xl sm:text-6xl font-bold mb-6">
-            About <span className="text-gradient-neon">MindMesh</span>
+        <div className="max-w-3xl mx-auto text-center mb-20">
+          <h1 className="text-4xl sm:text-5xl font-semibold mb-6">
+            About MindMesh
           </h1>
-          <p className="text-xl text-muted-foreground leading-relaxed">
+          <p className="text-lg text-muted-foreground leading-relaxed">
             An inclusive AI-powered workspace designed to streamline opportunities 
             and unlock potential for every student.
           </p>
         </div>
 
         {/* Mission Section */}
-        <div className="max-w-5xl mx-auto mb-24">
-          <div className="bg-card rounded-3xl p-8 sm:p-12 border border-border animate-fade-in" style={{ animationDelay: "0.2s" }}>
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6">Our Mission</h2>
-            <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
+        <div className="max-w-4xl mx-auto mb-24">
+          <div className="bg-card rounded-lg p-8 sm:p-10 border border-border">
+            <h2 className="text-2xl font-semibold mb-6">Our Mission</h2>
+            <div className="space-y-4 text-base text-muted-foreground leading-relaxed">
               <p>
                 MindMesh was created with a singular vision: to democratize access to powerful 
                 educational tools that help students excel academically while supporting their 
@@ -63,22 +63,19 @@ const About = () => {
 
         {/* Milestones Grid */}
         <div className="mb-24">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12 animate-fade-in">
+          <h2 className="text-2xl font-semibold text-center mb-12">
             Key Milestones
           </h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {milestones.map((milestone, index) => {
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+            {milestones.map((milestone) => {
               const Icon = milestone.icon;
               return (
                 <div
                   key={milestone.title}
-                  className="text-center p-6 bg-card rounded-2xl border border-border hover-lift animate-fade-in"
-                  style={{ animationDelay: `${index * 0.1}s` }}
+                  className="text-center p-6 bg-card rounded-lg border border-border"
                 >
-                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Icon className="w-8 h-8 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-bold mb-2">{milestone.title}</h3>
+                  <Icon className="w-6 h-6 text-primary mx-auto mb-4" />
+                  <h3 className="text-lg font-medium mb-2">{milestone.title}</h3>
                   <p className="text-sm text-muted-foreground">{milestone.description}</p>
                 </div>
               );
@@ -87,29 +84,29 @@ const About = () => {
         </div>
 
         {/* Future Plans */}
-        <div className="section-soft rounded-3xl p-8 sm:p-12 animate-fade-in">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-soft-section-foreground">
+        <div className="section-soft rounded-lg p-8 sm:p-10">
+          <h2 className="text-2xl font-semibold mb-8 text-soft-section-foreground">
             The Road Ahead
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             <div>
-              <div className="text-primary font-bold text-sm mb-2">2026</div>
-              <h3 className="text-xl font-bold mb-2 text-soft-section-foreground">Public Launch</h3>
-              <p className="text-soft-section-foreground/70">
+              <div className="text-primary text-sm font-medium mb-2">2026</div>
+              <h3 className="text-lg font-medium mb-2 text-soft-section-foreground">Public Launch</h3>
+              <p className="text-sm text-soft-section-foreground/70 leading-relaxed">
                 Release first public version with core features available to all students worldwide.
               </p>
             </div>
             <div>
-              <div className="text-secondary font-bold text-sm mb-2">2027</div>
-              <h3 className="text-xl font-bold mb-2 text-soft-section-foreground">Open Source Transition</h3>
-              <p className="text-soft-section-foreground/70">
+              <div className="text-primary text-sm font-medium mb-2">2027</div>
+              <h3 className="text-lg font-medium mb-2 text-soft-section-foreground">Open Source</h3>
+              <p className="text-sm text-soft-section-foreground/70 leading-relaxed">
                 Making key components open source to foster community development and transparency.
               </p>
             </div>
             <div>
-              <div className="text-accent font-bold text-sm mb-2">2027+</div>
-              <h3 className="text-xl font-bold mb-2 text-soft-section-foreground">VR/AR Expansion</h3>
-              <p className="text-soft-section-foreground/70">
+              <div className="text-primary text-sm font-medium mb-2">2027+</div>
+              <h3 className="text-lg font-medium mb-2 text-soft-section-foreground">VR/AR Expansion</h3>
+              <p className="text-sm text-soft-section-foreground/70 leading-relaxed">
                 Launch immersive learning experiences and establish MR lab facilities.
               </p>
             </div>
