@@ -45,15 +45,15 @@ const Home = () => {
   const founders = [
     {
       name: "Co-Founder 1",
-      role: "Chief Executive Officer",
+      role: "CEO and CTO",
       image: founder1,
-      bio: "Passionate about leveraging AI to transform education and empower students worldwide.",
+      bio: "Aspiring computer scientist and entrepreneur, passionate about leveraging AI to transform education and empower students worldwide.",
     },
     {
       name: "Co-Founder 2",
-      role: "Chief Technology Officer",
+      role: "CMO and CFO",
       image: founder2,
-      bio: "Building cutting-edge AI solutions that make learning accessible and personalized for every student.",
+      bio: "Passionate Coder Building AI solutions that make learning accessible and personalized for every student.",
     },
   ];
 
