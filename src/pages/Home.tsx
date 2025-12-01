@@ -48,12 +48,16 @@ const Home = () => {
       role: "CEO and CTO",
       image: founder1,
       bio: "Aspiring computer scientist and entrepreneur, passionate about leveraging AI to transform education and empower students worldwide.",
+      linkedin: "https://www.linkedin.com/in/susmit-acharya/",
+      github: "https://github.com/SusmitAcharya/",
     },
     {
       name: "Yogish Keswani",
       role: "CMO and CFO",
       image: founder2,
       bio: "Passionate Coder Building AI solutions that make learning accessible and personalized for every student.",
+      linkedin: "https://www.linkedin.com/in/yogishkeswani/",
+      github: "https://github.com/Yogishkeswani",
     },
   ];
 
@@ -100,7 +104,7 @@ const Home = () => {
             <div className="text-center lg:text-left space-y-8">
               <div className="inline-flex items-center px-3 py-1.5 bg-accent/10 border border-accent/30 rounded-md text-xs text-accent font-medium">
                 <Sparkles className="w-3 h-3 mr-1.5" />
-                Coming Mid-2026
+                Coming Soon for the Public in Mid-2026
               </div>
 
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-semibold leading-tight tracking-tight">
@@ -117,9 +121,11 @@ const Home = () => {
               </p>
 
               <div className="flex flex-wrap gap-6 text-sm text-muted-foreground justify-center lg:justify-start pt-4">
-                <span>1,000+ Beta Users</span>
+                <span>1,000+ Private Beta Users</span>
                 <span className="text-border">•</span>
-                <span>150+ Students Helped</span>
+                <span>150+ Students Reported Grade Improvments</span>
+                <span className="text-border">•</span>
+                <span>50+ Students Reported Exposure to Internships and other Oppurtunities</span>
               </div>
             </div>
 
@@ -142,9 +148,6 @@ const Home = () => {
             <h2 className="text-3xl sm:text-4xl font-semibold mb-4">
               Everything you need in one place
             </h2>
-            <p className="text-base text-muted-foreground">
-              Purpose-built tools to help you succeed academically and grow personally.
-            </p>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
@@ -165,50 +168,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Meet the Founders */}
-      <section id="founders" className="py-24">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16 max-w-2xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl font-semibold mb-4">
-              Meet the Founders
-            </h2>
-            <p className="text-base text-muted-foreground">
-              Building the future of student success
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {founders.map((founder) => (
-              <div
-                key={founder.name}
-                className="bg-card border border-border rounded-lg p-8 text-center"
-              >
-                <img
-                  src={founder.image}
-                  alt={founder.name}
-                  className="w-32 h-32 rounded-full mx-auto mb-6 object-cover"
-                />
-                <h3 className="text-xl font-semibold mb-2">{founder.name}</h3>
-                <p className="text-sm text-primary mb-4">{founder.role}</p>
-                <p className="text-sm text-muted-foreground mb-6">{founder.bio}</p>
-                <div className="flex justify-center gap-4">
-                  <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-                    <Linkedin className="w-5 h-5" />
-                  </a>
-                  <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-                    <Twitter className="w-5 h-5" />
-                  </a>
-                  <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-                    <Github className="w-5 h-5" />
-                  </a>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Timeline Section */}
+       {/* Timeline Section */}
       <section id="timeline" className="py-24 bg-muted/30 relative overflow-hidden">
         <div className="absolute inset-0 gradient-mesh opacity-30" />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -216,9 +176,6 @@ const Home = () => {
             <h2 className="text-3xl sm:text-4xl font-semibold mb-4">
               Our Journey
             </h2>
-            <p className="text-base text-muted-foreground">
-              From idea to impact: The MindMesh story
-            </p>
           </div>
 
           <div className="max-w-4xl mx-auto">
@@ -238,16 +195,39 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Sign Up Section */}
-      <section id="signup" className="py-24">
+      {/* Meet the Founders */}
+      <section id="founders" className="py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl mx-auto text-center space-y-6">
-            <h2 className="text-3xl sm:text-4xl font-semibold">
-              Get notified when we launch
+          <div className="text-center mb-16 max-w-2xl mx-auto">
+            <h2 className="text-3xl sm:text-4xl font-semibold mb-4">
+              Meet the Founders
             </h2>
-            <p className="text-base text-muted-foreground">
-              Join the waitlist for early access.
-            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {founders.map((founder) => (
+              <div
+                key={founder.name}
+                className="bg-card border border-border rounded-lg p-8 text-center"
+              >
+                <img
+                  src={founder.image}
+                  alt={founder.name}
+                  className="w-32 h-32 rounded-full mx-auto mb-6 object-cover"
+                />
+                <h3 className="text-xl font-semibold mb-2">{founder.name}</h3>
+                <p className="text-sm text-primary mb-4">{founder.role}</p>
+                <p className="text-sm text-muted-foreground mb-6">{founder.bio}</p>
+                <div className="flex justify-center gap-4">
+                  <a href={founder.linkedin} className="text-muted-foreground hover:text-foreground transition-colors">
+                    <Linkedin className="w-5 h-5" />
+                  </a>
+                  <a href={founder.github} className="text-muted-foreground hover:text-foreground transition-colors">
+                    <Github className="w-5 h-5" />
+                  </a>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
