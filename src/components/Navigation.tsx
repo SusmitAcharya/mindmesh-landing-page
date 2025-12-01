@@ -1,4 +1,4 @@
-import { useState } from "react";
+nimport { useState } from "react";
 import { Menu, X } from "lucide-react";
 
 const Navigation = () => {
@@ -9,7 +9,7 @@ const Navigation = () => {
     { to: "#features", label: "Features" },
     { to: "#timeline", label: "Our Story" },
     { to: "#founders", label: "The Founders" },
-    { to: "#timeline", label: "Testimonials" },
+    { to: "#testimonials", label: "Testimonials" },
   ];
 
   const scrollToSection = (id: string) => {
