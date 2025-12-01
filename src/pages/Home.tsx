@@ -1,7 +1,8 @@
-import { ArrowRight, Sparkles, Brain, BookOpen, Lightbulb, Network, Mic } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Sparkles, Brain, BookOpen, Lightbulb, Network, Mic, Linkedin, Github, Twitter } from "lucide-react";
 import EmailCapture from "@/components/EmailCapture";
 import heroPhone from "@/assets/hero-phone-mockup.png";
+import founder1 from "@/assets/founder-1.png";
+import founder2 from "@/assets/founder-2.png";
 
 const Home = () => {
   const features = [
@@ -42,13 +43,60 @@ const Home = () => {
     },
   ];
 
+  const founders = [
+    {
+      name: "Co-Founder 1",
+      role: "Chief Executive Officer",
+      image: founder1,
+      bio: "Passionate about leveraging AI to transform education and empower students worldwide.",
+    },
+    {
+      name: "Co-Founder 2",
+      role: "Chief Technology Officer",
+      image: founder2,
+      bio: "Building cutting-edge AI solutions that make learning accessible and personalized for every student.",
+    },
+  ];
+
+  const timeline = [
+    {
+      year: "2024",
+      title: "The Beginning",
+      description: "MindMesh was born from a simple idea: students need a unified platform that brings together all aspects of academic life.",
+    },
+    {
+      year: "Early 2025",
+      title: "Private Beta Launch",
+      description: "Released to a select group of 1,000+ students. Early feedback showed significant improvements in academic performance and organization.",
+    },
+    {
+      year: "Mid-2025",
+      title: "Growing Impact",
+      description: "150+ students reported grade improvements. 50+ students discovered new internships and research opportunities through our platform.",
+    },
+    {
+      year: "Present",
+      title: "Today",
+      description: "Refining the platform based on real student feedback. Building towards our mid-2026 public launch with enhanced AI features.",
+    },
+    {
+      year: "Mid-2026",
+      title: "Public Launch",
+      description: "Opening MindMesh to students worldwide. Introducing advanced AI tutoring and expanded opportunity matching.",
+    },
+    {
+      year: "2027+",
+      title: "The Future",
+      description: "Transitioning to open-source. Launching VR/AR immersive learning experiences. Building dedicated MR lab facilities.",
+    },
+  ];
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center">
+      <section id="home" className="relative min-h-screen flex items-center justify-center">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-32 relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center max-w-7xl mx-auto">
-            {/* Text Content */}
             <div className="text-center lg:text-left space-y-8">
               <div className="inline-flex items-center px-3 py-1.5 bg-muted border border-border rounded-md text-xs text-muted-foreground font-medium">
                 <Sparkles className="w-3 h-3 mr-1.5" />
@@ -77,7 +125,6 @@ const Home = () => {
               </div>
             </div>
 
-            {/* Phone Mockup */}
             <div className="relative flex justify-center lg:justify-end">
               <img
                 src={heroPhone}
@@ -90,13 +137,13 @@ const Home = () => {
       </section>
 
       {/* Features Section */}
-      <section className="section-soft py-24">
+      <section id="features" className="py-24 bg-muted/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 max-w-2xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl font-semibold mb-4 text-soft-section-foreground">
+            <h2 className="text-3xl sm:text-4xl font-semibold mb-4">
               Everything you need in one place
             </h2>
-            <p className="text-base text-soft-section-foreground/60">
+            <p className="text-base text-muted-foreground">
               Purpose-built tools to help you succeed academically and grow personally.
             </p>
           </div>
@@ -119,8 +166,80 @@ const Home = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-24">
+      {/* Meet the Founders */}
+      <section id="founders" className="py-24">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16 max-w-2xl mx-auto">
+            <h2 className="text-3xl sm:text-4xl font-semibold mb-4">
+              Meet the Founders
+            </h2>
+            <p className="text-base text-muted-foreground">
+              Building the future of student success
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {founders.map((founder) => (
+              <div
+                key={founder.name}
+                className="bg-card border border-border rounded-lg p-8 text-center"
+              >
+                <img
+                  src={founder.image}
+                  alt={founder.name}
+                  className="w-32 h-32 rounded-full mx-auto mb-6 object-cover"
+                />
+                <h3 className="text-xl font-semibold mb-2">{founder.name}</h3>
+                <p className="text-sm text-primary mb-4">{founder.role}</p>
+                <p className="text-sm text-muted-foreground mb-6">{founder.bio}</p>
+                <div className="flex justify-center gap-4">
+                  <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+                    <Linkedin className="w-5 h-5" />
+                  </a>
+                  <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+                    <Twitter className="w-5 h-5" />
+                  </a>
+                  <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+                    <Github className="w-5 h-5" />
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Timeline Section */}
+      <section id="timeline" className="py-24 bg-muted/30">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16 max-w-2xl mx-auto">
+            <h2 className="text-3xl sm:text-4xl font-semibold mb-4">
+              Our Journey
+            </h2>
+            <p className="text-base text-muted-foreground">
+              From idea to impact: The MindMesh story
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            {timeline.map((event, index) => (
+              <div key={index} className="relative pl-8 pb-12 border-l-2 border-border last:pb-0">
+                <div className="absolute left-[-9px] top-0 w-4 h-4 rounded-full bg-primary border-4 border-background" />
+                <div className="mb-2">
+                  <span className="inline-block px-3 py-1 bg-primary/10 text-primary text-xs font-medium rounded-full mb-2">
+                    {event.year}
+                  </span>
+                  <h3 className="text-xl font-semibold mb-2">{event.title}</h3>
+                  <p className="text-sm text-muted-foreground">{event.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Sign Up Section */}
+      <section id="signup" className="py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mx-auto text-center space-y-6">
             <h2 className="text-3xl sm:text-4xl font-semibold">
