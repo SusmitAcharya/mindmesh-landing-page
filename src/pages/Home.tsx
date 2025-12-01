@@ -94,17 +94,18 @@ const Home = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section id="home" className="relative min-h-screen flex items-center justify-center">
+      <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 gradient-mesh opacity-50" />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-32 relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center max-w-7xl mx-auto">
             <div className="text-center lg:text-left space-y-8">
-              <div className="inline-flex items-center px-3 py-1.5 bg-muted border border-border rounded-md text-xs text-muted-foreground font-medium">
+              <div className="inline-flex items-center px-3 py-1.5 bg-accent/10 border border-accent/30 rounded-md text-xs text-accent font-medium">
                 <Sparkles className="w-3 h-3 mr-1.5" />
                 Coming Mid-2026
               </div>
 
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-semibold leading-tight tracking-tight">
-                MindMesh
+                <span className="text-gradient">MindMesh</span>
               </h1>
 
               <p className="text-xl sm:text-2xl text-foreground/80">
@@ -137,8 +138,9 @@ const Home = () => {
       </section>
 
       {/* Features Section */}
-      <section id="features" className="py-24 bg-muted/30">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="features" className="py-24 bg-muted/30 relative overflow-hidden">
+        <div className="absolute inset-0 gradient-radial opacity-40" />
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16 max-w-2xl mx-auto">
             <h2 className="text-3xl sm:text-4xl font-semibold mb-4">
               Everything you need in one place
@@ -154,9 +156,9 @@ const Home = () => {
               return (
                 <div
                   key={feature.title}
-                  className="p-6 bg-background rounded-lg border border-border"
+                  className="p-6 bg-background rounded-lg border border-border hover:border-accent/50 transition-all duration-300 group"
                 >
-                  <Icon className="w-5 h-5 text-primary mb-4" />
+                  <Icon className="w-5 h-5 text-accent mb-4 group-hover:scale-110 transition-transform duration-300" />
                   <h3 className="text-lg font-medium mb-2">{feature.title}</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
                 </div>
@@ -210,8 +212,9 @@ const Home = () => {
       </section>
 
       {/* Timeline Section */}
-      <section id="timeline" className="py-24 bg-muted/30">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="timeline" className="py-24 bg-muted/30 relative overflow-hidden">
+        <div className="absolute inset-0 gradient-mesh opacity-30" />
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16 max-w-2xl mx-auto">
             <h2 className="text-3xl sm:text-4xl font-semibold mb-4">
               Our Journey
@@ -223,10 +226,10 @@ const Home = () => {
 
           <div className="max-w-4xl mx-auto">
             {timeline.map((event, index) => (
-              <div key={index} className="relative pl-8 pb-12 border-l-2 border-border last:pb-0">
-                <div className="absolute left-[-9px] top-0 w-4 h-4 rounded-full bg-primary border-4 border-background" />
+              <div key={index} className="relative pl-8 pb-12 border-l-2 border-accent/30 last:pb-0 group">
+                <div className="absolute left-[-9px] top-0 w-4 h-4 rounded-full bg-accent accent-glow border-4 border-background group-hover:scale-125 transition-transform duration-300" />
                 <div className="mb-2">
-                  <span className="inline-block px-3 py-1 bg-primary/10 text-primary text-xs font-medium rounded-full mb-2">
+                  <span className="inline-block px-3 py-1 bg-accent/10 text-accent text-xs font-medium rounded-full mb-2 border border-accent/30">
                     {event.year}
                   </span>
                   <h3 className="text-xl font-semibold mb-2">{event.title}</h3>

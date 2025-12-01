@@ -30,9 +30,10 @@ All colors MUST be HSL.
     --muted: 220 12% 15%;
     --muted-foreground: 220 8% 60%;
 
-    /* Minimal accent */
-    --accent: 215 25% 50%;
-    --accent-foreground: 210 10% 98%;
+    /* Vibrant cyan accent for AI feel */
+    --accent: 180 100% 50%;
+    --accent-foreground: 222 15% 8%;
+    --accent-glow: 180 100% 50%;
 
     /* Light section background */
     --soft-section: 210 15% 96%;
@@ -43,12 +44,17 @@ All colors MUST be HSL.
 
     --border: 220 12% 18%;
     --input: 220 12% 15%;
-    --ring: 210 30% 55%;
+    --ring: 180 100% 50%;
 
     --radius: 0.5rem;
 
     /* Transitions */
     --transition-smooth: all 0.3s ease;
+    
+    /* Subtle gradients */
+    --gradient-radial: radial-gradient(circle at 50% 0%, hsl(180 100% 50% / 0.08), transparent 50%);
+    --gradient-mesh: radial-gradient(at 0% 0%, hsl(180 100% 50% / 0.05) 0px, transparent 50%),
+                     radial-gradient(at 100% 100%, hsl(210 30% 55% / 0.05) 0px, transparent 50%);
   }
 }
 
@@ -79,5 +85,24 @@ All colors MUST be HSL.
   .section-soft {
     background: var(--soft-section);
     color: var(--soft-section-foreground);
+  }
+
+  .gradient-radial {
+    background: var(--gradient-radial);
+  }
+
+  .gradient-mesh {
+    background: var(--gradient-mesh);
+  }
+
+  .accent-glow {
+    box-shadow: 0 0 20px hsl(var(--accent-glow) / 0.3);
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--primary)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 }
