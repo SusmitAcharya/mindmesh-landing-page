@@ -9,7 +9,7 @@ const Navigation = () => {
     { to: "#features", label: "Features" },
     { to: "#timeline", label: "Our Story" },
     { to: "#founders", label: "The Founders" },
-    { to: "#testimonials", label: "Testimonials" },
+    { to: "#", label: "Testimonials" },
   ];
 
   const scrollToSection = (id: string) => {
