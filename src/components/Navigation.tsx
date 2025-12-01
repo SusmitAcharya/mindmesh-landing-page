@@ -10,7 +10,6 @@ const Navigation = () => {
     { to: "#timeline", label: "Our Story" },
     { to: "#founders", label: "The Founders" },
     { to: "#testimonials", label: "Testimonials" },
-    { to: Footer, label: "Let's Connect" },
   ];
 
   const scrollToSection = (id: string) => {
