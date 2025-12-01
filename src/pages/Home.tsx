@@ -121,11 +121,9 @@ const Home = () => {
               </p>
 
               <div className="flex flex-wrap gap-6 text-sm text-muted-foreground justify-center lg:justify-start pt-4">
-                <span>1,000+ Private Beta Users</span>
-                <span className="text-border">•</span>
-                <span>150+ Students Reported Grade Improvments</span>
-                <span className="text-border">•</span>
-                <span>50+ Students Reported Exposure to Internships and other Oppurtunities</span>
+                <p><span className="text-border">•</span><span>1,000+ Private Beta Users</span></p>
+                <p><span className="text-border">•</span><span>150+ Students Reported Grade Improvments</span></p>
+                <p><span className="text-border">•</span><span>50+ Students Reported Exposure to Internships and other Oppurtunities</span></p>
               </div>
             </div>
 
