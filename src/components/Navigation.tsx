@@ -7,9 +7,9 @@ const Navigation = () => {
   const links = [
     { to: "#home", label: "Home" },
     { to: "#features", label: "Features" },
-    { to: "#founders", label: "Founders" },
     { to: "#timeline", label: "Our Story" },
-    { to: "#signup", label: "Sign Up" },
+    { to: "#founders", label: "The Founders" },
+    { to: "#timeline", label: "Testimonials" },
   ];
 
   const scrollToSection = (id: string) => {
