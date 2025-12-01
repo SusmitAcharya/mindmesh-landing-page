@@ -1,5 +1,4 @@
 import { Sparkles, Brain, BookOpen, Lightbulb, Network, Mic, Linkedin, Github, Twitter } from "lucide-react";
-import EmailCapture from "@/components/EmailCapture";
 import heroPhone from "@/assets/hero-phone-mockup.png";
 import founder1 from "@/assets/founder-1.png";
 import founder2 from "@/assets/founder-2.png";
@@ -116,8 +115,6 @@ const Home = () => {
                 An AI-powered student workspace bringing together planning, learning, 
                 networking, and opportunities in one seamless platform.
               </p>
-
-              <EmailCapture variant="hero" />
 
               <div className="flex flex-wrap gap-6 text-sm text-muted-foreground justify-center lg:justify-start pt-4">
                 <span>1,000+ Beta Users</span>
@@ -251,7 +248,6 @@ const Home = () => {
             <p className="text-base text-muted-foreground">
               Join the waitlist for early access.
             </p>
-            <EmailCapture />
           </div>
         </div>
       </section>
