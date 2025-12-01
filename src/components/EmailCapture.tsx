@@ -6,18 +6,11 @@ import { Mail } from "lucide-react";
 
 const EmailCapture = ({ variant = "default" }: { variant?: "default" | "hero" }) => {
   const [email, setEmail] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-
-    // Simulate API call
-    setTimeout(() => {
-      toast.success("Thanks for your interest! We'll notify you when we launch.");
-      setEmail("");
-      setIsSubmitting(false);
-    }, 1000);
+    // Redirect to Google Form (replace with actual link later)
+    window.open("https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform", "_blank");
   };
 
   const isHero = variant === "hero";
@@ -38,10 +31,9 @@ const EmailCapture = ({ variant = "default" }: { variant?: "default" | "hero" })
         </div>
         <Button
           type="submit"
-          disabled={isSubmitting}
           className="h-11 px-6"
         >
-          {isSubmitting ? "Submitting..." : "Notify Me"}
+          Notify Me
         </Button>
       </div>
     </form>
