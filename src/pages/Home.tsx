@@ -1,7 +1,7 @@
 import { Sparkles, Brain, BookOpen, Lightbulb, Network, Mic, Linkedin, Github, Twitter } from "lucide-react";
 import heroPhone from "@/assets/hero-phone-mockup.png";
-import founder1 from "@/assets/founder-1.png";
-import founder2 from "@/assets/founder-2.png";
+import founder1 from "@/assets/susmitacharya.png";
+import founder2 from "@/assets/yogishkeswani.png";
 
 const Home = () => {
   const features = [
@@ -44,13 +44,13 @@ const Home = () => {
 
   const founders = [
     {
-      name: "Co-Founder 1",
+      name: "Susmit Acharya",
       role: "CEO and CTO",
       image: founder1,
       bio: "Aspiring computer scientist and entrepreneur, passionate about leveraging AI to transform education and empower students worldwide.",
     },
     {
-      name: "Co-Founder 2",
+      name: "Yogish Keswani",
       role: "CMO and CFO",
       image: founder2,
       bio: "Passionate Coder Building AI solutions that make learning accessible and personalized for every student.",
