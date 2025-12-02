@@ -2,7 +2,7 @@ import { Mail } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer id="#footer" className="bg-card border-t border-border py-12">
+    <footer id="footer" className="bg-card border-t border-border py-12">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center space-y-6">
           <div className="text-center">

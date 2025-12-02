@@ -250,8 +250,8 @@ const Home = () => {
               <motion.div 
                 key={index} 
                 className="relative pl-8 pb-12 border-l-2 border-accent/30 last:pb-0 group"
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.6, delay: index * 0.15 }}
               >
