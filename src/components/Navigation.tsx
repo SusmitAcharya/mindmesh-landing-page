@@ -44,6 +44,13 @@ const Navigation = () => {
                 {link.label}
               </a>
             ))}
+            <a
+              href="#footer"
+              onClick={(e) => { e.preventDefault(); scrollToSection("footer"); }}
+              className="text-sm px-4 py-2 border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground transition-all rounded-md font-medium"
+            >
+              Let's Connect
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -68,6 +75,13 @@ const Navigation = () => {
                 {link.label}
               </a>
             ))}
+            <a
+              href="#footer"
+              onClick={(e) => { e.preventDefault(); scrollToSection("footer"); }}
+              className="block py-2 text-sm px-4 border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground transition-all rounded-md font-medium text-center"
+            >
+              Let's Connect
+            </a>
           </div>
         )}
       </div>
