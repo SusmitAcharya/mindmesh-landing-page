@@ -15,7 +15,7 @@ const Footer = () => {
           <div className="flex items-center space-x-2 text-muted-foreground text-sm">
             <Mail className="w-4 h-4" />
             <a
-              href="mailto:contact@mindmesh.app"
+              href="mailto:contact@mindmesh.zone"
               className="hover:text-foreground transition-colors"
             >
               contact@mindmesh.zone
