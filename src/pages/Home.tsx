@@ -1,6 +1,8 @@
 import { Sparkles, Brain, BookOpen, Lightbulb, Network, Mic, Linkedin, Github, Star } from "lucide-react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
+import { motion } from "framer-motion";
+import { Fireflies } from "@/components/Fireflies";
 import heroPhone from "@/assets/hero-phone-mockup.png";
 import founder1 from "@/assets/susmitacharya.png";
 import founder2 from "@/assets/yogishkeswani.png";
@@ -139,9 +141,15 @@ const Home = () => {
       {/* Hero Section */}
       <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 gradient-mesh opacity-50" />
+        <Fireflies />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-32 relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center max-w-7xl mx-auto">
-            <div className="text-center lg:text-left space-y-8">
+            <motion.div 
+              className="text-center lg:text-left space-y-8"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
               <div className="inline-flex items-center px-3 py-1.5 bg-accent/10 border border-accent/30 rounded-md text-xs text-accent font-medium">
                 <Sparkles className="w-3 h-3 mr-1.5" />
                 Coming Soon for the Public in Mid-2026
@@ -165,15 +173,20 @@ const Home = () => {
                 <p><span className="text-border">•</span><span>150+ Students Reported Grade Improvments</span></p>
                 <p><span className="text-border">•</span><span>50+ Students Reported Exposure to Internships and other Oppurtunities</span></p>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="relative flex justify-center lg:justify-end">
+            <motion.div 
+              className="relative flex justify-center lg:justify-end"
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            >
               <img
                 src={heroPhone}
                 alt="MindMesh App Interface"
                 className="w-full max-w-md lg:max-w-lg"
               />
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -182,24 +195,34 @@ const Home = () => {
       <section id="features" className="py-24 bg-muted/30 relative overflow-hidden">
         <div className="absolute inset-0 gradient-radial opacity-40" />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-16 max-w-2xl mx-auto">
+          <motion.div 
+            className="text-center mb-16 max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+          >
             <h2 className="text-3xl sm:text-4xl font-semibold mb-4">
               Everything you need in one place
             </h2>
-          </div>
+          </motion.div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {features.map((feature) => {
+            {features.map((feature, index) => {
               const Icon = feature.icon;
               return (
-                <div
+                <motion.div
                   key={feature.title}
                   className="p-6 bg-background rounded-lg border border-border hover:border-accent/50 transition-all duration-300 group"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
                   <Icon className="w-5 h-5 text-accent mb-4 group-hover:scale-110 transition-transform duration-300" />
                   <h3 className="text-lg font-medium mb-2">{feature.title}</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
-                </div>
+                </motion.div>
               );
             })}
           </div>
@@ -210,15 +233,28 @@ const Home = () => {
       <section id="timeline" className="py-24 relative overflow-hidden">
         <div className="absolute inset-0 gradient-mesh opacity-30" />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-16 max-w-2xl mx-auto">
+          <motion.div 
+            className="text-center mb-16 max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+          >
             <h2 className="text-3xl sm:text-4xl font-semibold mb-4">
               Our Journey
             </h2>
-          </div>
+          </motion.div>
 
           <div className="max-w-4xl mx-auto">
             {timeline.map((event, index) => (
-              <div key={index} className="relative pl-8 pb-12 border-l-2 border-accent/30 last:pb-0 group">
+              <motion.div 
+                key={index} 
+                className="relative pl-8 pb-12 border-l-2 border-accent/30 last:pb-0 group"
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.6, delay: index * 0.15 }}
+              >
                 <div className="absolute left-[-9px] top-0 w-4 h-4 rounded-full bg-accent accent-glow border-4 border-background group-hover:scale-125 transition-transform duration-300" />
                 <div className="mb-2">
                   <span className="inline-block px-3 py-1 bg-accent/10 text-accent text-xs font-medium rounded-full mb-2 border border-accent/30">
@@ -227,7 +263,7 @@ const Home = () => {
                   <h3 className="text-xl font-semibold mb-2">{event.title}</h3>
                   <p className="text-sm text-muted-foreground">{event.description}</p>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -236,17 +272,27 @@ const Home = () => {
       {/* Meet the Founders */}
       <section id="founders" className="py-24 bg-muted/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16 max-w-2xl mx-auto">
+          <motion.div 
+            className="text-center mb-16 max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+          >
             <h2 className="text-3xl sm:text-4xl font-semibold mb-4">
               Meet the Founders
             </h2>
-          </div>
+          </motion.div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {founders.map((founder) => (
-              <div
+            {founders.map((founder, index) => (
+              <motion.div
                 key={founder.name}
                 className="bg-card border border-border rounded-lg p-8 text-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
               >
                 <img
                   src={founder.image}
@@ -264,7 +310,7 @@ const Home = () => {
                     <Github className="w-5 h-5" />
                   </a>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -274,13 +320,25 @@ const Home = () => {
       <section id="testimonials" className="py-24 relative overflow-hidden">
         <div className="absolute inset-0 gradient-mesh opacity-30" />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-16 max-w-2xl mx-auto">
+          <motion.div 
+            className="text-center mb-16 max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+          >
             <h2 className="text-3xl sm:text-4xl font-semibold mb-4">
               Hear from Our Users!
             </h2>
-          </div>
+          </motion.div>
 
-          <div className="max-w-4xl mx-auto px-12">
+          <motion.div 
+            className="max-w-4xl mx-auto px-12"
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             <Carousel
               opts={{
                 align: "start",
@@ -329,7 +387,7 @@ const Home = () => {
               <CarouselPrevious className="bg-background/80 backdrop-blur-sm border-accent/30 hover:bg-accent hover:text-accent-foreground" />
               <CarouselNext className="bg-background/80 backdrop-blur-sm border-accent/30 hover:bg-accent hover:text-accent-foreground" />
             </Carousel>
-          </div>
+          </motion.div>
         </div>
       </section>
     </div>
