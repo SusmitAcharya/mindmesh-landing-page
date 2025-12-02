@@ -47,7 +47,7 @@ const Navigation = () => {
             <a
               href="#footer"
               onClick={(e) => { e.preventDefault(); scrollToSection("footer"); }}
-              className="text-sm px-4 py-2 border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground transition-all rounded-md font-medium"
+              className="text-sm text-accent hover:text-foreground transition-colors rounded-md font-medium"
             >
               Let's Connect
             </a>
