@@ -1,4 +1,6 @@
-import { Sparkles, Brain, BookOpen, Lightbulb, Network, Mic, Linkedin, Github, Twitter } from "lucide-react";
+import { Sparkles, Brain, BookOpen, Lightbulb, Network, Mic, Linkedin, Github, Star } from "lucide-react";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { Card, CardContent } from "@/components/ui/card";
 import heroPhone from "@/assets/hero-phone-mockup.png";
 import founder1 from "@/assets/susmitacharya.png";
 import founder2 from "@/assets/yogishkeswani.png";
@@ -92,6 +94,44 @@ const Home = () => {
       title: "The Future",
       description: "Transitioning to open-source. Launching VR/AR immersive learning experiences. Building dedicated MR lab facilities.",
     },
+  ];
+
+  const testimonials = [
+    {
+      text: "MindMesh completely transformed how I manage my studies. The AI planner helped me improve my grades by 15% in just one semester!",
+      rating: 5,
+      photo: "https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah",
+      name: "Sarah Chen",
+      designation: "Computer Science Student, MIT"
+    },
+    {
+      text: "The opportunity hub connected me with an amazing research position that I never would have found on my own. Game changer!",
+      rating: 5,
+      photo: "https://api.dicebear.com/7.x/avataaars/svg?seed=Michael",
+      name: "Michael Rodriguez",
+      designation: "Biology Major, Stanford"
+    },
+    {
+      text: "Obu keeps me motivated every single day. It's like having a personal coach who actually understands student life.",
+      rating: 4,
+      photo: "https://api.dicebear.com/7.x/avataaars/svg?seed=Emma",
+      name: "Emma Thompson",
+      designation: "Engineering Student, UC Berkeley"
+    },
+    {
+      text: "StratoNotes made studying so much more efficient. The AI-generated mind maps help me understand complex topics faster.",
+      rating: 5,
+      photo: "https://api.dicebear.com/7.x/avataaars/svg?seed=David",
+      name: "David Kim",
+      designation: "Medical Student, Johns Hopkins"
+    },
+    {
+      text: "Best platform for student networking. I've connected with amazing people and formed study groups that actually work.",
+      rating: 4,
+      photo: "https://api.dicebear.com/7.x/avataaars/svg?seed=Priya",
+      name: "Priya Sharma",
+      designation: "Business Student, Harvard"
+    }
   ];
 
   return (
@@ -238,6 +278,57 @@ const Home = () => {
             <h2 className="text-3xl sm:text-4xl font-semibold mb-4">
               Hear from Our Users!
             </h2>
+          </div>
+
+          <div className="max-w-4xl mx-auto px-12">
+            <Carousel
+              opts={{
+                align: "start",
+                loop: true,
+              }}
+              className="w-full"
+            >
+              <CarouselContent>
+                {testimonials.map((testimonial, index) => (
+                  <CarouselItem key={index}>
+                    <Card className="border-border bg-card/50">
+                      <CardContent className="p-8 flex flex-col items-center text-center space-y-6">
+                        <p className="text-lg text-foreground/90 italic">
+                          "{testimonial.text}"
+                        </p>
+                        
+                        <div className="flex gap-1">
+                          {[...Array(5)].map((_, i) => (
+                            <Star
+                              key={i}
+                              className={`w-5 h-5 ${
+                                i < testimonial.rating
+                                  ? "fill-accent text-accent"
+                                  : "text-muted-foreground"
+                              }`}
+                            />
+                          ))}
+                        </div>
+
+                        <div className="flex flex-col items-center space-y-3">
+                          <img
+                            src={testimonial.photo}
+                            alt={testimonial.name}
+                            className="w-16 h-16 rounded-full border-2 border-accent/30"
+                          />
+                          <div>
+                            <p className="font-semibold text-foreground">{testimonial.name}</p>
+                            <p className="text-sm text-muted-foreground">{testimonial.designation}</p>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="bg-background/80 backdrop-blur-sm border-accent/30 hover:bg-accent hover:text-accent-foreground" />
+              <CarouselNext className="bg-background/80 backdrop-blur-sm border-accent/30 hover:bg-accent hover:text-accent-foreground" />
+            </Carousel>
           </div>
         </div>
       </section>
