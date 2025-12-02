@@ -47,7 +47,7 @@ const Navigation = () => {
             <a
               href="#footer"
               onClick={(e) => { e.preventDefault(); scrollToSection("footer"); }}
-              className="text-sm text-accent hover:text-foreground transition-colors rounded-md font-medium"
+              className="text-sm text-accent hover:text-foreground transition-colors font-medium"
             >
               Let's Connect
             </a>
@@ -78,7 +78,7 @@ const Navigation = () => {
             <a
               href="#footer"
               onClick={(e) => { e.preventDefault(); scrollToSection("footer"); }}
-              className="block py-2 text-sm text-accent hover:text-foreground transition-colors rounded-md font-medium text-center"
+              className="block py-2 text-sm text-accent hover:text-foreground transition-colors font-medium text-center"
             >
               Let's Connect
             </a>
