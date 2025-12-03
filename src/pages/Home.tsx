@@ -8,51 +8,22 @@ import heroPhone from "@/assets/hero-phone-mockup.png";
 import founder1 from "@/assets/susmitacharya.png";
 import founder2 from "@/assets/yogishkeswani.png";
 
-interface HomeProps {
-  onIntroComplete?: () => void;
-}
-
-const Home = ({ onIntroComplete }: HomeProps) => {
-  const [showLoading, setShowLoading] = useState(true);
-  const [loadingText, setLoadingText] = useState("");
+const Home = () => {
+  const [introComplete, setIntroComplete] = useState(false);
   const [lightPhase, setLightPhase] = useState(0);
 
-  const fullLoadingText = "Entering the world of big tech";
-
-  // Loading screen typewriter effect
   useEffect(() => {
-    if (!showLoading) return;
-    
-    let index = 0;
-    const typeInterval = setInterval(() => {
-      if (index <= fullLoadingText.length) {
-        setLoadingText(fullLoadingText.slice(0, index));
-        index++;
-      } else {
-        clearInterval(typeInterval);
-        setTimeout(() => setShowLoading(false), 800);
-      }
-    }, 60);
-
-    return () => clearInterval(typeInterval);
-  }, [showLoading]);
-
-  // Sequential lighting phases - instant pops with 0.5s gaps
-  useEffect(() => {
-    if (showLoading) return;
-    
+    // Sequential lighting phases
     const timers = [
-      setTimeout(() => setLightPhase(1), 300),    // MindMesh lights up
-      setTimeout(() => setLightPhase(2), 800),    // "Your unified hub" lights up
-      setTimeout(() => setLightPhase(3), 1300),   // Subtext lights up
-      setTimeout(() => setLightPhase(4), 1800),   // Stats light up
-      setTimeout(() => setLightPhase(5), 2300),   // Full page lights up
-      setTimeout(() => {
-        onIntroComplete?.();
-      }, 0),
+      setTimeout(() => setLightPhase(1), 300),   // MindMesh lights up
+      setTimeout(() => setLightPhase(2), 900),   // "Your unified hub" lights up
+      setTimeout(() => setLightPhase(3), 1500),  // Subtext lights up
+      setTimeout(() => setLightPhase(4), 2100),  // Stats light up
+      setTimeout(() => setLightPhase(5), 2700),  // Full page lights up
+      setTimeout(() => setIntroComplete(true), 3200),
     ];
     return () => timers.forEach(clearTimeout);
-  }, [showLoading, onIntroComplete]);
+  }, []);
   const features = [
     {
       icon: Brain,
@@ -181,75 +152,32 @@ const Home = ({ onIntroComplete }: HomeProps) => {
     }
   ];
 
-  // Loading screen
-  if (showLoading) {
-    return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="text-center space-y-8">
-          {/* Cyber grid background */}
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute inset-0" style={{
-              backgroundImage: `
-                linear-gradient(hsl(var(--accent) / 0.3) 1px, transparent 1px),
-                linear-gradient(90deg, hsl(var(--accent) / 0.3) 1px, transparent 1px)
-              `,
-              backgroundSize: '50px 50px'
-            }} />
-          </div>
-          
-          {/* Loading text with typewriter effect */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="relative z-10"
-          >
-            <h1 className="text-2xl sm:text-3xl md:text-4xl font-mono tracking-wider text-accent">
-              {loadingText}
-              <motion.span
-                animate={{ opacity: [1, 0] }}
-                transition={{ duration: 0.5, repeat: Infinity }}
-                className="inline-block w-[3px] h-8 bg-accent ml-1 align-middle"
-              />
-            </h1>
-          </motion.div>
-          
-          {/* Progress bar */}
-          <motion.div 
-            className="w-64 mx-auto h-[2px] bg-muted overflow-hidden rounded-full"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3 }}
-          >
-            <motion.div
-              className="h-full bg-accent"
-              initial={{ width: "0%" }}
-              animate={{ width: "100%" }}
-              transition={{ duration: 2.5, ease: "easeInOut" }}
-            />
-          </motion.div>
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <div className={`min-h-screen ${lightPhase < 5 ? 'bg-black' : ''}`}>
+    <div className="min-h-screen">
       {/* Hero Section */}
-      <section id="home" className={`relative min-h-screen flex items-center justify-center overflow-hidden ${lightPhase < 5 ? 'bg-black' : ''}`}>
-        {/* Pure black overlay that hides until complete */}
-        <div 
-          className={`absolute inset-0 bg-black z-20 pointer-events-none transition-none ${lightPhase >= 5 ? 'opacity-0' : 'opacity-100'}`}
+      <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Dark overlay that fades out */}
+        <motion.div 
+          className="absolute inset-0 bg-background z-20 pointer-events-none"
+          initial={{ opacity: 1 }}
+          animate={{ opacity: lightPhase >= 5 ? 0 : 0.85 - (lightPhase * 0.15) }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
         />
         
-        {/* Gradient background - only visible after phase 5 */}
-        <div 
-          className={`absolute inset-0 gradient-mesh transition-none ${lightPhase >= 5 ? 'opacity-50' : 'opacity-0'}`}
+        <motion.div 
+          className="absolute inset-0 gradient-mesh"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: lightPhase >= 5 ? 0.5 : 0 }}
+          transition={{ duration: 1, ease: "easeOut" }}
         />
         
-        {/* Fireflies - only visible after phase 5 */}
-        <div className={lightPhase >= 5 ? 'opacity-100' : 'opacity-0'}>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: lightPhase >= 5 ? 1 : 0 }}
+          transition={{ duration: 0.8 }}
+        >
           <Fireflies />
-        </div>
+        </motion.div>
         
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-32 relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center max-w-7xl mx-auto">
