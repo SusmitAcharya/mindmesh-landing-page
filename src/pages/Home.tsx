@@ -49,7 +49,7 @@ const Home = ({ onIntroComplete }: HomeProps) => {
       setTimeout(() => setLightPhase(5), 2300),   // Full page lights up
       setTimeout(() => {
         onIntroComplete?.();
-      }, 100),
+      }, 500),
     ];
     return () => timers.forEach(clearTimeout);
   }, [showLoading, onIntroComplete]);
@@ -289,15 +289,6 @@ const Home = ({ onIntroComplete }: HomeProps) => {
                   networking, and opportunities in one seamless platform.
                 </span>
               </p>
-
-              {/* Stats - lights up fourth (phase 4) - instant pop */}
-              <div 
-                className={`flex flex-wrap gap-6 text-sm text-muted-foreground justify-center lg:justify-start pt-4 transition-none ${lightPhase >= 4 ? 'opacity-100' : 'opacity-0'}`}
-              >
-                <p><span className="text-border">•</span><span>1,000+ Private Beta Users</span></p>
-                <p><span className="text-border">•</span><span>150+ Students Reported Grade Improvments</span></p>
-                <p><span className="text-border">•</span><span>50+ Students Reported Exposure to Internships and other Oppurtunities</span></p>
-              </div>
             </div>
 
             {/* Phone mockup - lights up with phase 5 - instant pop */}
