@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -63,27 +64,41 @@ const Navigation = () => {
         </div>
 
         {/* Mobile Navigation */}
-        {isOpen && (
-          <div className="md:hidden py-4 space-y-3 border-t border-border">
-            {links.slice(1).map((link) => (
-              <a
-                key={link.to}
-                href={link.to}
-                onClick={(e) => { e.preventDefault(); scrollToSection(link.to); }}
-                className="block py-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
-                {link.label}
-              </a>
-            ))}
-            <a
-              href="#footer"
-              onClick={(e) => { e.preventDefault(); scrollToSection("footer"); }}
-              className="block py-2 text-sm text-accent hover:text-foreground transition-colors font-medium"
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div 
+              className="md:hidden py-4 space-y-3 border-t border-border overflow-hidden"
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
             >
-              Let's Connect
-            </a>
-          </div>
-        )}
+              {links.slice(1).map((link, index) => (
+                <motion.a
+                  key={link.to}
+                  href={link.to}
+                  onClick={(e) => { e.preventDefault(); scrollToSection(link.to); }}
+                  className="block py-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.05, duration: 0.2 }}
+                >
+                  {link.label}
+                </motion.a>
+              ))}
+              <motion.a
+                href="#footer"
+                onClick={(e) => { e.preventDefault(); scrollToSection("footer"); }}
+                className="block py-2 text-sm text-accent hover:text-foreground transition-colors font-medium"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: links.length * 0.05, duration: 0.2 }}
+              >
+                Let's Connect
+              </motion.a>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </nav>
   );
