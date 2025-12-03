@@ -8,10 +8,13 @@ import heroPhone from "@/assets/hero-phone-mockup.png";
 import founder1 from "@/assets/susmitacharya.png";
 import founder2 from "@/assets/yogishkeswani.png";
 
-const Home = () => {
+interface HomeProps {
+  onIntroComplete?: () => void;
+}
+
+const Home = ({ onIntroComplete }: HomeProps) => {
   const [showLoading, setShowLoading] = useState(true);
   const [loadingText, setLoadingText] = useState("");
-  const [introComplete, setIntroComplete] = useState(false);
   const [lightPhase, setLightPhase] = useState(0);
 
   const fullLoadingText = "Entering the world of big tech";
@@ -34,20 +37,22 @@ const Home = () => {
     return () => clearInterval(typeInterval);
   }, [showLoading]);
 
-  // Sequential lighting phases - more spaced out with starker transitions
+  // Sequential lighting phases - instant pops with 0.5s gaps
   useEffect(() => {
     if (showLoading) return;
     
     const timers = [
-      setTimeout(() => setLightPhase(1), 400),    // MindMesh lights up
-      setTimeout(() => setLightPhase(2), 1200),   // "Your unified hub" lights up
-      setTimeout(() => setLightPhase(3), 2000),   // Subtext lights up
-      setTimeout(() => setLightPhase(4), 2800),   // Stats light up
-      setTimeout(() => setLightPhase(5), 3600),   // Full page lights up
-      setTimeout(() => setIntroComplete(true), 4200),
+      setTimeout(() => setLightPhase(1), 300),    // MindMesh lights up
+      setTimeout(() => setLightPhase(2), 800),    // "Your unified hub" lights up
+      setTimeout(() => setLightPhase(3), 1300),   // Subtext lights up
+      setTimeout(() => setLightPhase(4), 1800),   // Stats light up
+      setTimeout(() => setLightPhase(5), 2300),   // Full page lights up
+      setTimeout(() => {
+        onIntroComplete?.();
+      }, 2500),
     ];
     return () => timers.forEach(clearTimeout);
-  }, [showLoading]);
+  }, [showLoading, onIntroComplete]);
   const features = [
     {
       icon: Brain,
@@ -228,109 +233,83 @@ const Home = () => {
   }
 
   return (
-    <div className="min-h-screen">
+    <div className={`min-h-screen ${lightPhase < 5 ? 'bg-black' : ''}`}>
       {/* Hero Section */}
-      <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Dark overlay that fades out - starker contrast */}
-        <motion.div 
-          className="absolute inset-0 bg-background z-20 pointer-events-none"
-          initial={{ opacity: 1 }}
-          animate={{ opacity: lightPhase >= 5 ? 0 : 1 - (lightPhase * 0.18) }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
+      <section id="home" className={`relative min-h-screen flex items-center justify-center overflow-hidden ${lightPhase < 5 ? 'bg-black' : ''}`}>
+        {/* Pure black overlay that hides until complete */}
+        <div 
+          className={`absolute inset-0 bg-black z-20 pointer-events-none transition-none ${lightPhase >= 5 ? 'opacity-0' : 'opacity-100'}`}
         />
         
-        <motion.div 
-          className="absolute inset-0 gradient-mesh"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: lightPhase >= 5 ? 0.5 : 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
+        {/* Gradient background - only visible after phase 5 */}
+        <div 
+          className={`absolute inset-0 gradient-mesh transition-none ${lightPhase >= 5 ? 'opacity-50' : 'opacity-0'}`}
         />
         
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: lightPhase >= 5 ? 1 : 0 }}
-          transition={{ duration: 0.8 }}
-        >
+        {/* Fireflies - only visible after phase 5 */}
+        <div className={lightPhase >= 5 ? 'opacity-100' : 'opacity-0'}>
           <Fireflies />
-        </motion.div>
+        </div>
         
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-32 relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-32 relative z-30">
           <div className="grid lg:grid-cols-2 gap-16 items-center max-w-7xl mx-auto">
             <div className="text-center lg:text-left space-y-8">
               {/* Badge - lights up with phase 3 */}
-              <motion.div 
-                className="inline-flex items-center px-3 py-1.5 bg-accent/10 border border-accent/30 rounded-md text-xs text-accent font-medium"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: lightPhase >= 3 ? 1 : 0 }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
+              <div 
+                className={`inline-flex items-center px-3 py-1.5 bg-accent/10 border border-accent/30 rounded-md text-xs text-accent font-medium transition-none ${lightPhase >= 3 ? 'opacity-100' : 'opacity-0'}`}
               >
                 <Sparkles className="w-3 h-3 mr-1.5" />
                 Coming Soon for the Public in Mid-2026
-              </motion.div>
+              </div>
 
-              {/* MindMesh - lights up first (phase 1) - starker transition */}
-              <motion.h1 
-                className="text-5xl sm:text-6xl lg:text-7xl font-semibold leading-tight tracking-tight"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: lightPhase >= 1 ? 1 : 0 }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
+              {/* MindMesh - lights up first (phase 1) - instant pop */}
+              <h1 
+                className={`text-5xl sm:text-6xl lg:text-7xl font-semibold leading-tight tracking-tight transition-none ${lightPhase >= 1 ? 'opacity-100' : 'opacity-0'}`}
               >
-                <span className={`transition-all duration-300 ${lightPhase >= 1 ? 'text-gradient' : 'text-muted-foreground/5'}`}>
+                <span className={lightPhase >= 1 ? 'text-gradient' : 'text-transparent'}>
                   MindMesh
                 </span>
-              </motion.h1>
+              </h1>
 
-              {/* Your unified hub - lights up second (phase 2) - starker */}
-              <motion.p 
-                className="text-xl sm:text-2xl"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: lightPhase >= 2 ? 1 : 0 }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
+              {/* Your unified hub - lights up second (phase 2) - instant pop */}
+              <p 
+                className={`text-xl sm:text-2xl transition-none ${lightPhase >= 2 ? 'opacity-100' : 'opacity-0'}`}
               >
-                <span className={`transition-colors duration-300 ${lightPhase >= 2 ? 'text-foreground/90' : 'text-transparent'}`}>
+                <span className={lightPhase >= 2 ? 'text-foreground/90' : 'text-transparent'}>
                   Your unified hub for academic and personal growth
                 </span>
-              </motion.p>
+              </p>
 
-              {/* AI-powered subtext - lights up third (phase 3) */}
-              <motion.p 
-                className="text-base max-w-xl"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: lightPhase >= 3 ? 1 : 0 }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
+              {/* AI-powered subtext - lights up third (phase 3) - instant pop */}
+              <p 
+                className={`text-base max-w-xl transition-none ${lightPhase >= 3 ? 'opacity-100' : 'opacity-0'}`}
               >
                 <span className="text-muted-foreground">
                   An AI-powered student workspace bringing together planning, learning, 
                   networking, and opportunities in one seamless platform.
                 </span>
-              </motion.p>
+              </p>
 
-              {/* Stats - lights up fourth (phase 4) */}
-              <motion.div 
-                className="flex flex-wrap gap-6 text-sm text-muted-foreground justify-center lg:justify-start pt-4"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: lightPhase >= 4 ? 1 : 0 }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
+              {/* Stats - lights up fourth (phase 4) - instant pop */}
+              <div 
+                className={`flex flex-wrap gap-6 text-sm text-muted-foreground justify-center lg:justify-start pt-4 transition-none ${lightPhase >= 4 ? 'opacity-100' : 'opacity-0'}`}
               >
                 <p><span className="text-border">•</span><span>1,000+ Private Beta Users</span></p>
                 <p><span className="text-border">•</span><span>150+ Students Reported Grade Improvments</span></p>
                 <p><span className="text-border">•</span><span>50+ Students Reported Exposure to Internships and other Oppurtunities</span></p>
-              </motion.div>
+              </div>
             </div>
 
-            {/* Phone mockup - lights up with phase 5 */}
-            <motion.div 
-              className="relative flex justify-center lg:justify-end"
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: lightPhase >= 5 ? 1 : 0, x: lightPhase >= 5 ? 0 : 30 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
+            {/* Phone mockup - lights up with phase 5 - instant pop */}
+            <div 
+              className={`relative flex justify-center lg:justify-end transition-none ${lightPhase >= 5 ? 'opacity-100' : 'opacity-0'}`}
             >
               <img
                 src={heroPhone}
                 alt="MindMesh App Interface"
                 className="w-full max-w-md lg:max-w-lg"
               />
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
