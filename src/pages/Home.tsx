@@ -49,7 +49,7 @@ const Home = ({ onIntroComplete }: HomeProps) => {
       setTimeout(() => setLightPhase(5), 2300),   // Full page lights up
       setTimeout(() => {
         onIntroComplete?.();
-      }, 2300),
+      }, 0),
     ];
     return () => timers.forEach(clearTimeout);
   }, [showLoading, onIntroComplete]);
