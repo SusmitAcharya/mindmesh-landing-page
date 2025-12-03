@@ -9,21 +9,45 @@ import founder1 from "@/assets/susmitacharya.png";
 import founder2 from "@/assets/yogishkeswani.png";
 
 const Home = () => {
+  const [showLoading, setShowLoading] = useState(true);
+  const [loadingText, setLoadingText] = useState("");
   const [introComplete, setIntroComplete] = useState(false);
   const [lightPhase, setLightPhase] = useState(0);
 
+  const fullLoadingText = "Entering the world of big tech";
+
+  // Loading screen typewriter effect
   useEffect(() => {
-    // Sequential lighting phases
+    if (!showLoading) return;
+    
+    let index = 0;
+    const typeInterval = setInterval(() => {
+      if (index <= fullLoadingText.length) {
+        setLoadingText(fullLoadingText.slice(0, index));
+        index++;
+      } else {
+        clearInterval(typeInterval);
+        setTimeout(() => setShowLoading(false), 800);
+      }
+    }, 60);
+
+    return () => clearInterval(typeInterval);
+  }, [showLoading]);
+
+  // Sequential lighting phases - more spaced out with starker transitions
+  useEffect(() => {
+    if (showLoading) return;
+    
     const timers = [
-      setTimeout(() => setLightPhase(1), 300),   // MindMesh lights up
-      setTimeout(() => setLightPhase(2), 900),   // "Your unified hub" lights up
-      setTimeout(() => setLightPhase(3), 1500),  // Subtext lights up
-      setTimeout(() => setLightPhase(4), 2100),  // Stats light up
-      setTimeout(() => setLightPhase(5), 2700),  // Full page lights up
-      setTimeout(() => setIntroComplete(true), 3200),
+      setTimeout(() => setLightPhase(1), 400),    // MindMesh lights up
+      setTimeout(() => setLightPhase(2), 1200),   // "Your unified hub" lights up
+      setTimeout(() => setLightPhase(3), 2000),   // Subtext lights up
+      setTimeout(() => setLightPhase(4), 2800),   // Stats light up
+      setTimeout(() => setLightPhase(5), 3600),   // Full page lights up
+      setTimeout(() => setIntroComplete(true), 4200),
     ];
     return () => timers.forEach(clearTimeout);
-  }, []);
+  }, [showLoading]);
   const features = [
     {
       icon: Brain,
@@ -152,16 +176,67 @@ const Home = () => {
     }
   ];
 
+  // Loading screen
+  if (showLoading) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center space-y-8">
+          {/* Cyber grid background */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute inset-0" style={{
+              backgroundImage: `
+                linear-gradient(hsl(var(--accent) / 0.3) 1px, transparent 1px),
+                linear-gradient(90deg, hsl(var(--accent) / 0.3) 1px, transparent 1px)
+              `,
+              backgroundSize: '50px 50px'
+            }} />
+          </div>
+          
+          {/* Loading text with typewriter effect */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="relative z-10"
+          >
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-mono tracking-wider text-accent">
+              {loadingText}
+              <motion.span
+                animate={{ opacity: [1, 0] }}
+                transition={{ duration: 0.5, repeat: Infinity }}
+                className="inline-block w-[3px] h-8 bg-accent ml-1 align-middle"
+              />
+            </h1>
+          </motion.div>
+          
+          {/* Progress bar */}
+          <motion.div 
+            className="w-64 mx-auto h-[2px] bg-muted overflow-hidden rounded-full"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+          >
+            <motion.div
+              className="h-full bg-accent"
+              initial={{ width: "0%" }}
+              animate={{ width: "100%" }}
+              transition={{ duration: 2.5, ease: "easeInOut" }}
+            />
+          </motion.div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
       <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Dark overlay that fades out */}
+        {/* Dark overlay that fades out - starker contrast */}
         <motion.div 
           className="absolute inset-0 bg-background z-20 pointer-events-none"
           initial={{ opacity: 1 }}
-          animate={{ opacity: lightPhase >= 5 ? 0 : 0.85 - (lightPhase * 0.15) }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          animate={{ opacity: lightPhase >= 5 ? 0 : 1 - (lightPhase * 0.18) }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
         />
         
         <motion.div 
@@ -187,36 +262,32 @@ const Home = () => {
                 className="inline-flex items-center px-3 py-1.5 bg-accent/10 border border-accent/30 rounded-md text-xs text-accent font-medium"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: lightPhase >= 3 ? 1 : 0 }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
               >
                 <Sparkles className="w-3 h-3 mr-1.5" />
                 Coming Soon for the Public in Mid-2026
               </motion.div>
 
-              {/* MindMesh - lights up first (phase 1) */}
+              {/* MindMesh - lights up first (phase 1) - starker transition */}
               <motion.h1 
                 className="text-5xl sm:text-6xl lg:text-7xl font-semibold leading-tight tracking-tight"
-                initial={{ opacity: 0.1 }}
-                animate={{ 
-                  opacity: lightPhase >= 1 ? 1 : 0.1,
-                }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: lightPhase >= 1 ? 1 : 0 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
               >
-                <span className={`transition-all duration-700 ${lightPhase >= 1 ? 'text-gradient' : 'text-muted-foreground/20'}`}>
+                <span className={`transition-all duration-300 ${lightPhase >= 1 ? 'text-gradient' : 'text-muted-foreground/5'}`}>
                   MindMesh
                 </span>
               </motion.h1>
 
-              {/* Your unified hub - lights up second (phase 2) */}
+              {/* Your unified hub - lights up second (phase 2) - starker */}
               <motion.p 
                 className="text-xl sm:text-2xl"
-                initial={{ opacity: 0.1 }}
-                animate={{ 
-                  opacity: lightPhase >= 2 ? 1 : 0.1,
-                }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: lightPhase >= 2 ? 1 : 0 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
               >
-                <span className={`transition-colors duration-500 ${lightPhase >= 2 ? 'text-foreground/80' : 'text-muted-foreground/10'}`}>
+                <span className={`transition-colors duration-300 ${lightPhase >= 2 ? 'text-foreground/90' : 'text-transparent'}`}>
                   Your unified hub for academic and personal growth
                 </span>
               </motion.p>
@@ -226,7 +297,7 @@ const Home = () => {
                 className="text-base max-w-xl"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: lightPhase >= 3 ? 1 : 0 }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
               >
                 <span className="text-muted-foreground">
                   An AI-powered student workspace bringing together planning, learning, 
@@ -239,7 +310,7 @@ const Home = () => {
                 className="flex flex-wrap gap-6 text-sm text-muted-foreground justify-center lg:justify-start pt-4"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: lightPhase >= 4 ? 1 : 0 }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
               >
                 <p><span className="text-border">•</span><span>1,000+ Private Beta Users</span></p>
                 <p><span className="text-border">•</span><span>150+ Students Reported Grade Improvments</span></p>
@@ -252,7 +323,7 @@ const Home = () => {
               className="relative flex justify-center lg:justify-end"
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: lightPhase >= 5 ? 1 : 0, x: lightPhase >= 5 ? 0 : 30 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
             >
               <img
                 src={heroPhone}
