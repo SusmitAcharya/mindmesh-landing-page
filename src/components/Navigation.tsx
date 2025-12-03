@@ -13,17 +13,20 @@ const Home = () => {
   const [lightPhase, setLightPhase] = useState(0);
 
   useEffect(() => {
-    // Sequential lighting phases
+    if (showLoading) return;
+    
     const timers = [
-      setTimeout(() => setLightPhase(1), 300),   // MindMesh lights up
-      setTimeout(() => setLightPhase(2), 900),   // "Your unified hub" lights up
-      setTimeout(() => setLightPhase(3), 1500),  // Subtext lights up
-      setTimeout(() => setLightPhase(4), 2100),  // Stats light up
-      setTimeout(() => setLightPhase(5), 2700),  // Full page lights up
-      setTimeout(() => setIntroComplete(true), 3200),
+      setTimeout(() => setLightPhase(1), 300),    // MindMesh lights up
+      setTimeout(() => setLightPhase(2), 800),    // "Your unified hub" lights up
+      setTimeout(() => setLightPhase(3), 1300),   // Subtext lights up
+      setTimeout(() => setLightPhase(4), 1800),   // Stats light up
+      setTimeout(() => setLightPhase(5), 2300),   // Full page lights up
+      setTimeout(() => {
+        onIntroComplete?.();
+      }, 2500),
     ];
     return () => timers.forEach(clearTimeout);
-  }, []);
+  }, [showLoading, onIntroComplete]);
   const features = [
     {
       icon: Brain,
