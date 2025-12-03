@@ -47,6 +47,9 @@ const Home = ({ onIntroComplete }: HomeProps) => {
       setTimeout(() => setLightPhase(3), 1300),   // Subtext lights up
       setTimeout(() => setLightPhase(4), 1800),   // Stats light up
       setTimeout(() => setLightPhase(5), 2300),   // Full page lights up
+      setTimeout(() => {
+        onIntroComplete?.();
+      }, 1500),
     ];
     return () => timers.forEach(clearTimeout);
   }, [showLoading, onIntroComplete]);
