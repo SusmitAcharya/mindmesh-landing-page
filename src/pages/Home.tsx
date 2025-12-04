@@ -8,22 +8,71 @@ import heroPhone from "@/assets/hero-phone-mockup.png";
 import founder1 from "@/assets/susmitacharya.png";
 import founder2 from "@/assets/yogishkeswani.png";
 
-const Home = () => {
-  const [introComplete, setIntroComplete] = useState(false);
+interface HomeProps {
+  onIntroComplete?: () => void;
+}
+
+const Home = ({ onIntroComplete }: HomeProps) => {
+  const [showLoading, setShowLoading] = useState(true);
+  const [loadingProgress, setLoadingProgress] = useState(0);
+  const [loadingText, setLoadingText] = useState("");
   const [lightPhase, setLightPhase] = useState(0);
 
+  const fullText = "Entering the world of big tech";
+
+  // Typewriter effect for loading screen
   useEffect(() => {
-    // Sequential lighting phases
-    const timers = [
-      setTimeout(() => setLightPhase(1), 300),   // MindMesh lights up
-      setTimeout(() => setLightPhase(2), 900),   // "Your unified hub" lights up
-      setTimeout(() => setLightPhase(3), 1500),  // Subtext lights up
-      setTimeout(() => setLightPhase(4), 2100),  // Stats light up
-      setTimeout(() => setLightPhase(5), 2700),  // Full page lights up
-      setTimeout(() => setIntroComplete(true), 3200),
-    ];
-    return () => timers.forEach(clearTimeout);
+    if (!showLoading) return;
+
+    let charIndex = 0;
+    const typeInterval = setInterval(() => {
+      if (charIndex <= fullText.length) {
+        setLoadingText(fullText.slice(0, charIndex));
+        charIndex++;
+      } else {
+        clearInterval(typeInterval);
+      }
+    }, 60);
+
+    const progressInterval = setInterval(() => {
+      setLoadingProgress((prev) => {
+        if (prev >= 100) {
+          clearInterval(progressInterval);
+          return 100;
+        }
+        return prev + 2;
+      });
+    }, 50);
+
+    const loadingTimer = setTimeout(() => {
+      setShowLoading(false);
+    }, 3000);
+
+    return () => {
+      clearInterval(typeInterval);
+      clearInterval(progressInterval);
+      clearTimeout(loadingTimer);
+    };
   }, []);
+
+  // Light up sequence after loading
+  useEffect(() => {
+    if (showLoading) return;
+
+    const timers = [
+      setTimeout(() => setLightPhase(1), 500),
+      setTimeout(() => setLightPhase(2), 1000),
+      setTimeout(() => setLightPhase(3), 1500),
+      setTimeout(() => setLightPhase(4), 2000),
+      setTimeout(() => setLightPhase(5), 2500),
+      setTimeout(() => {
+        onIntroComplete?.();
+      }, 3000),
+    ];
+
+    return () => timers.forEach(clearTimeout);
+  }, [showLoading, onIntroComplete]);
+
   const features = [
     {
       icon: Brain,
@@ -152,114 +201,93 @@ const Home = () => {
     }
   ];
 
+  // Loading Screen
+  if (showLoading) {
+    return (
+      <div className="min-h-screen bg-black flex flex-col items-center justify-center">
+        <div className="text-center space-y-8">
+          <h1 className="text-2xl sm:text-3xl font-mono text-accent">
+            {loadingText}
+            <span className="animate-pulse">_</span>
+          </h1>
+          <div className="w-64 h-1 bg-muted rounded-full overflow-hidden">
+            <div 
+              className="h-full bg-accent transition-all duration-100 ease-out"
+              style={{ width: `${loadingProgress}%` }}
+            />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Dark overlay that fades out */}
-        <motion.div 
-          className="absolute inset-0 bg-background z-20 pointer-events-none"
-          initial={{ opacity: 1 }}
-          animate={{ opacity: lightPhase >= 5 ? 0 : 0.85 - (lightPhase * 0.15) }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+      <section id="home" className={`relative min-h-screen flex items-center justify-center overflow-hidden ${lightPhase < 5 ? 'bg-black' : ''}`}>
+        {/* Background gradient - only visible after phase 5 */}
+        <div 
+          className={`absolute inset-0 gradient-mesh transition-opacity duration-300 ${lightPhase >= 5 ? 'opacity-50' : 'opacity-0'}`}
         />
         
-        <motion.div 
-          className="absolute inset-0 gradient-mesh"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: lightPhase >= 5 ? 0.5 : 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-        />
-        
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: lightPhase >= 5 ? 1 : 0 }}
-          transition={{ duration: 0.8 }}
-        >
+        {/* Fireflies - only visible after phase 5 */}
+        <div className={`transition-opacity duration-300 ${lightPhase >= 5 ? 'opacity-100' : 'opacity-0'}`}>
           <Fireflies />
-        </motion.div>
+        </div>
         
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-32 relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center max-w-7xl mx-auto">
             <div className="text-center lg:text-left space-y-8">
               {/* Badge - lights up with phase 3 */}
-              <motion.div 
-                className="inline-flex items-center px-3 py-1.5 bg-accent/10 border border-accent/30 rounded-md text-xs text-accent font-medium"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: lightPhase >= 3 ? 1 : 0 }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
+              <div 
+                className={`inline-flex items-center px-3 py-1.5 bg-accent/10 border border-accent/30 rounded-md text-xs text-accent font-medium transition-opacity duration-0 ${lightPhase >= 3 ? 'opacity-100' : 'opacity-0'}`}
               >
                 <Sparkles className="w-3 h-3 mr-1.5" />
                 Coming Soon for the Public in Mid-2026
-              </motion.div>
+              </div>
 
               {/* MindMesh - lights up first (phase 1) */}
-              <motion.h1 
-                className="text-5xl sm:text-6xl lg:text-7xl font-semibold leading-tight tracking-tight"
-                initial={{ opacity: 0.1 }}
-                animate={{ 
-                  opacity: lightPhase >= 1 ? 1 : 0.1,
-                }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
-              >
-                <span className={`transition-all duration-700 ${lightPhase >= 1 ? 'text-gradient' : 'text-muted-foreground/20'}`}>
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-semibold leading-tight tracking-tight">
+                <span className={`transition-all duration-0 ${lightPhase >= 1 ? 'text-gradient opacity-100' : 'opacity-0'}`}>
                   MindMesh
                 </span>
-              </motion.h1>
+              </h1>
 
               {/* Your unified hub - lights up second (phase 2) */}
-              <motion.p 
-                className="text-xl sm:text-2xl"
-                initial={{ opacity: 0.1 }}
-                animate={{ 
-                  opacity: lightPhase >= 2 ? 1 : 0.1,
-                }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
-              >
-                <span className={`transition-colors duration-500 ${lightPhase >= 2 ? 'text-foreground/80' : 'text-muted-foreground/10'}`}>
+              <p className="text-xl sm:text-2xl">
+                <span className={`transition-all duration-0 ${lightPhase >= 2 ? 'text-foreground/80 opacity-100' : 'opacity-0'}`}>
                   Your unified hub for academic and personal growth
                 </span>
-              </motion.p>
+              </p>
 
               {/* AI-powered subtext - lights up third (phase 3) */}
-              <motion.p 
-                className="text-base max-w-xl"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: lightPhase >= 3 ? 1 : 0 }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
-              >
+              <p className={`text-base max-w-xl transition-opacity duration-0 ${lightPhase >= 3 ? 'opacity-100' : 'opacity-0'}`}>
                 <span className="text-muted-foreground">
                   An AI-powered student workspace bringing together planning, learning, 
                   networking, and opportunities in one seamless platform.
                 </span>
-              </motion.p>
+              </p>
 
               {/* Stats - lights up fourth (phase 4) */}
-              <motion.div 
-                className="flex flex-wrap gap-6 text-sm text-muted-foreground justify-center lg:justify-start pt-4"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: lightPhase >= 4 ? 1 : 0 }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
+              <div 
+                className={`flex flex-wrap gap-6 text-sm text-muted-foreground justify-center lg:justify-start pt-4 transition-opacity duration-0 ${lightPhase >= 4 ? 'opacity-100' : 'opacity-0'}`}
               >
                 <p><span className="text-border">•</span><span>1,000+ Private Beta Users</span></p>
                 <p><span className="text-border">•</span><span>150+ Students Reported Grade Improvments</span></p>
                 <p><span className="text-border">•</span><span>50+ Students Reported Exposure to Internships and other Oppurtunities</span></p>
-              </motion.div>
+              </div>
             </div>
 
             {/* Phone mockup - lights up with phase 5 */}
-            <motion.div 
-              className="relative flex justify-center lg:justify-end"
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: lightPhase >= 5 ? 1 : 0, x: lightPhase >= 5 ? 0 : 30 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
+            <div 
+              className={`relative flex justify-center lg:justify-end transition-opacity duration-0 ${lightPhase >= 5 ? 'opacity-100' : 'opacity-0'}`}
             >
               <img
                 src={heroPhone}
                 alt="MindMesh App Interface"
                 className="w-full max-w-md lg:max-w-lg"
               />
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -421,35 +449,29 @@ const Home = () => {
             >
               <CarouselContent>
                 {testimonials.map((testimonial, index) => (
-                  <CarouselItem key={index}>
-                    <Card className="border-border bg-card/50">
-                      <CardContent className="p-8 flex flex-col items-center text-center space-y-6">
-                        <p className="text-lg text-foreground/90 italic">
+                  <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/2">
+                    <Card className="bg-card border-border h-full">
+                      <CardContent className="p-6 flex flex-col h-full">
+                        <p className="text-sm text-muted-foreground mb-4 flex-grow italic">
                           "{testimonial.text}"
                         </p>
-                        
-                        <div className="flex gap-1">
+                        <div className="flex items-center gap-1 mb-4">
                           {[...Array(5)].map((_, i) => (
                             <Star
                               key={i}
-                              className={`w-5 h-5 ${
-                                i < testimonial.rating
-                                  ? "fill-accent text-accent"
-                                  : "text-muted-foreground"
-                              }`}
+                              className={`w-4 h-4 ${i < testimonial.rating ? 'text-accent fill-accent' : 'text-muted-foreground'}`}
                             />
                           ))}
                         </div>
-
-                        <div className="flex flex-col items-center space-y-3">
+                        <div className="flex items-center gap-3">
                           <img
                             src={testimonial.photo}
                             alt={testimonial.name}
-                            className="w-16 h-16 rounded-full border-2 border-accent/30"
+                            className="w-10 h-10 rounded-full"
                           />
                           <div>
-                            <p className="font-semibold text-foreground">{testimonial.name}</p>
-                            <p className="text-sm text-muted-foreground">{testimonial.designation}</p>
+                            <p className="text-sm font-medium">{testimonial.name}</p>
+                            <p className="text-xs text-muted-foreground">{testimonial.designation}</p>
                           </div>
                         </div>
                       </CardContent>
@@ -457,9 +479,42 @@ const Home = () => {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious className="bg-background/80 backdrop-blur-sm border-accent/30 hover:bg-accent hover:text-accent-foreground" />
-              <CarouselNext className="bg-background/80 backdrop-blur-sm border-accent/30 hover:bg-accent hover:text-accent-foreground" />
+              <CarouselPrevious className="hidden sm:flex" />
+              <CarouselNext className="hidden sm:flex" />
             </Carousel>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Sign Up Section */}
+      <section id="signup" className="py-24 bg-muted/30">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div 
+            className="max-w-2xl mx-auto text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-3xl sm:text-4xl font-semibold mb-4">
+              Be Part of the Journey
+            </h2>
+            <p className="text-muted-foreground mb-8">
+              Join our waitlist and be the first to know when MindMesh launches publicly.
+            </p>
+            <form className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="flex-1 px-4 py-3 bg-background border border-border rounded-lg text-sm focus:outline-none focus:border-accent transition-colors"
+              />
+              <button
+                type="submit"
+                className="px-6 py-3 bg-accent text-accent-foreground font-medium rounded-lg hover:bg-accent/90 transition-colors"
+              >
+                Join Waitlist
+              </button>
+            </form>
           </motion.div>
         </div>
       </section>
