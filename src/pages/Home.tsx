@@ -1,19 +1,22 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Sparkles, Brain, BookOpen, Lightbulb, Network, Mic, Linkedin, Github, Star } from "lucide-react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Fireflies } from "@/components/Fireflies";
+import LoadingScreen from "@/components/LoadingScreen";
 import heroPhone from "@/assets/hero-phone-mockup.png";
 import founder1 from "@/assets/susmitacharya.png";
 import founder2 from "@/assets/yogishkeswani.png";
 
 const Home = () => {
+  const [showLoading, setShowLoading] = useState(true);
   const [introComplete, setIntroComplete] = useState(false);
   const [lightPhase, setLightPhase] = useState(0);
 
-  useEffect(() => {
-    // Sequential lighting phases
+  const handleLoadingComplete = useCallback(() => {
+    setShowLoading(false);
+    // Start the lighting sequence after loading screen
     const timers = [
       setTimeout(() => setLightPhase(1), 300),   // MindMesh lights up
       setTimeout(() => setLightPhase(2), 900),   // "Your unified hub" lights up
@@ -153,7 +156,12 @@ const Home = () => {
   ];
 
   return (
-    <div className="min-h-screen">
+    <>
+      <AnimatePresence>
+        {showLoading && <LoadingScreen onComplete={handleLoadingComplete} />}
+      </AnimatePresence>
+      
+      <div className="min-h-screen">
       {/* Hero Section */}
       <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Dark overlay that fades out */}
@@ -464,6 +472,7 @@ const Home = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

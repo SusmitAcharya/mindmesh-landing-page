@@ -47,7 +47,7 @@ const Navigation = () => {
             ))}
             <a
               href="#footer"
-              onClick={(e) => { e.preventDefault(); scrollToSection("footer"); }}
+              onClick={(e) => { e.preventDefault(); scrollToSection("#footer"); }}
               className="text-sm text-accent hover:text-foreground transition-colors font-medium"
             >
               Let's Connect
@@ -88,7 +88,7 @@ const Navigation = () => {
               ))}
               <motion.a
                 href="#footer"
-                onClick={(e) => { e.preventDefault(); scrollToSection("footer"); }}
+                onClick={(e) => { e.preventDefault(); scrollToSection("#footer"); }}
                 className="block py-2 text-sm text-accent hover:text-foreground transition-colors font-medium"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
