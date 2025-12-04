@@ -8,31 +8,31 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Dark minimal theme - higher contrast */
-    --background: 222 20% 4%;
-    --foreground: 210 15% 95%;
+    /* Dark minimal theme */
+    --background: 222 15% 8%;
+    --foreground: 210 10% 92%;
 
-    --card: 222 18% 7%;
-    --card-foreground: 210 15% 95%;
+    --card: 222 12% 11%;
+    --card-foreground: 210 10% 92%;
 
-    --popover: 222 18% 7%;
-    --popover-foreground: 210 15% 95%;
+    --popover: 222 12% 11%;
+    --popover-foreground: 210 10% 92%;
 
     /* Muted blue primary */
-    --primary: 210 40% 60%;
-    --primary-foreground: 210 15% 98%;
+    --primary: 210 30% 55%;
+    --primary-foreground: 210 10% 98%;
 
     /* Subtle secondary */
-    --secondary: 220 15% 12%;
-    --secondary-foreground: 210 15% 95%;
+    --secondary: 220 12% 18%;
+    --secondary-foreground: 210 10% 92%;
 
     /* Muted surfaces */
-    --muted: 220 15% 10%;
-    --muted-foreground: 220 10% 55%;
+    --muted: 220 12% 15%;
+    --muted-foreground: 220 8% 60%;
 
     /* Vibrant cyan accent for AI feel */
     --accent: 180 100% 50%;
-    --accent-foreground: 222 20% 4%;
+    --accent-foreground: 222 15% 8%;
     --accent-glow: 180 100% 50%;
 
     /* Light section background */
