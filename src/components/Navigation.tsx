@@ -16,8 +16,11 @@ const Navigation = () => {
   const scrollToSection = (id: string) => {
     const element = document.querySelector(id);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
       setIsOpen(false);
+      // Small delay to let menu close animation start, then scroll
+      setTimeout(() => {
+        element.scrollIntoView({ behavior: "smooth" });
+      }, 100);
     }
   };
 
