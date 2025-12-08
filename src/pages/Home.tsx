@@ -122,7 +122,7 @@ const Home = () => {
     },
     {
       year: "Mid-2026",
-      title: "Public Launch",
+      title: "Estimated Public Launch",
       description: "The public launch will signal the shift from a promising student tool to a global learning environment. Our vision here is straightforward: high-quality academic support should be accessible, not gated behind privilege. The first release will have an upgraded AI tutoring stack, and expanded opportunity matching will set the foundation for a broader ecosystem that schools and independent learners can rely on.",
     },
     {
