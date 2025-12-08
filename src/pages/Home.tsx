@@ -137,7 +137,7 @@ const Home = () => {
       text: "I used to feel overwhelmed every week because my assignments piled up and regular planners were too chaotic to keep up with everyday. Stratos Plan changed that. Its AI automatically organized my workload and showed me exactly what to focus on each day. School now feels manageable instead of chaotic.",
       rating: 5,
       name: "Sanjana Paik",
-      designation: "11th garder, ACS Barasat"
+      designation: "11th grader, ACS Barasat"
     },
     {
       text: "I wasted hours searching for explanations for concepts and every teacher had a different approach which made me confused on how to approach the problems. Stratos Tutor broke things down in a way I understood immediately and connected my previous learnings. It greatly helped me score well in my ICSE.",
