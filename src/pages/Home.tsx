@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { Sparkles, Brain, BookOpen, Lightbulb, Network, Mic, Linkedin, Github, Star, RectangleGoggles, School } from "lucide-react";
+import { Sparkles, Brain, BookOpen, Lightbulb, Network, Mic, Linkedin, Github, Star, RectangleGoggles, School, UsersRound } from "lucide-react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
 import { motion, AnimatePresence } from "framer-motion";
@@ -54,7 +54,7 @@ const Home = () => {
       description: "Ever feel like opportunities only reach the same few students? Opportunity Hub surfaces internships, research roles, and programs tailored to each learner—leveling access instead of leaving it to chance.",
     },
     {
-      icon: Network,
+      icon: UsersRound,
       title: "Mesh Connect",
       description: "Ever wanted a study group but didn’t know who to work with? Mesh Connect brings students together to collaborate, ask questions, and learn in a community that builds academic momentum.",
     },
