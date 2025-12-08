@@ -137,25 +137,25 @@ const Home = () => {
       text: "I used to feel overwhelmed every week because my assignments piled up and regular planners were too chaotic to keep up with everyday. Stratos Plan changed that. Its AI automatically organized my workload and showed me exactly what to focus on each day. School now feels manageable instead of chaotic.",
       rating: 5,
       name: "Sanjana Paik",
-      designation: "11th grader, ACS"
+      designation: "Class 11, ACS"
     },
     {
       text: "I wasted hours searching for explanations for concepts and every teacher had a different approach which made me confused on how to approach the problems. Stratos Tutor broke things down in a way I understood immediately and connected my previous learnings. It greatly helped me score well in my ICSE.",
       rating: 5,
       name: "Sagnik Ghosh",
-      designation: "10th grader, ACS"
+      designation: "Class 10, ACS"
     },
     {
       text: "I always thought opportunities were for rich students who were better connected. Opportunity Hub proved me wrong, and helped me get internships and take part in programs I never knew existed, and still keeps updating me on latest oppurtunities for high schoolers in low-resource contexts like me.",
       rating: 4,
       name: "Avik Ganguly",
-      designation: "12th grader, TCMS"
+      designation: "Class 12, TCMS"
     },
     {
       text: "My notes used to be messy paragraphs that didn’t help when exams came, because teachers taught too fast to make proper segregated notes and I would be too tired after coming home to sit with them.. Stratos Notes converted them into clear mind maps and summaries quickly, and added missing concepts and flashcards, turning them into something I could actually follow.",
       rating: 5,
       name: "Somdutta Majhi",
-      designation: "9th grader, TCMS"
+      designation: "Class 9, TCMS"
     },
     {
       text: "With Obu, I noticed a clear shift in my child’s mood and consistency. It brought balance by not giving genric AI genrated advice but by helping her understand her habits and optimize them to maximize productivity over 6 weeks.",
@@ -360,11 +360,8 @@ const Home = () => {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-3xl sm:text-4xl font-semibold mb-4">
-              Case Studies
+              Read Real Impact Stories
             </h2>
-            <p className="text-muted-foreground">
-              Real stories of transformation and impact
-            </p>
           </motion.div>
 
           <motion.div
@@ -378,15 +375,15 @@ const Home = () => {
               {/* Header */}
               <div className="border-b border-border pb-6">
                 <span className="inline-block px-3 py-1 bg-accent/10 text-accent text-xs font-medium rounded-full mb-4 border border-accent/30">
-                  Student Impact Story
+                  Saving the Percentage for ICSE
                 </span>
                 <h3 className="text-2xl md:text-3xl font-semibold mb-2">
-                  From Struggling to Thriving: A Complete Academic Turnaround
+                  From Struggling to Thriving: A Last Minute Save
                 </h3>
                 <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-muted-foreground">
-                  <span className="font-medium text-foreground">Rahul Sharma</span>
+                  <span className="font-medium text-foreground">Bihan Chakraborty</span>
                   <span className="hidden sm:inline">•</span>
-                  <span>Class 11 Student, St. Xavier's High School</span>
+                  <span>Class 11 Student, Auxilium Convent School, Barasat</span>
                 </div>
               </div>
 
@@ -402,7 +399,7 @@ const Home = () => {
 
                 {/* How We Bridged It */}
                 <div className="space-y-3">
-                  <h4 className="text-lg font-semibold text-primary">How We Bridged It</h4>
+                  <h4 className="text-lg font-semibold text-primary">How MindMesh Bridged It</h4>
                   <p className="text-sm text-muted-foreground leading-relaxed">
                     Using Stratos Plan, we created a personalized study schedule that balanced his coaching and school workload. Stratos Tutor helped him understand complex Physics and Chemistry concepts through adaptive explanations. Obu provided daily motivation check-ins that kept him consistent even during tough weeks.
                   </p>
@@ -436,10 +433,10 @@ const Home = () => {
                   className="inline-flex items-center gap-3 px-6 py-3 bg-accent/10 border border-accent/30 rounded-lg text-accent hover:bg-accent/20 transition-colors group"
                 >
                   <Play className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                  <span className="font-medium">Watch Rahul's Story</span>
+                  <span className="font-medium">Watch Bihan's Story</span>
                 </a>
                 <p className="text-xs text-muted-foreground mt-2">
-                  Hear directly from Rahul about his journey with MindMesh
+                  Hear directly from Bihan about his journey with MindMesh
                 </p>
               </div>
             </div>
