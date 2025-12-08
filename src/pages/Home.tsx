@@ -320,7 +320,7 @@ const Home = () => {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-3xl sm:text-4xl font-semibold mb-4">
-              Our Journey
+              Here is How it All Started
             </h2>
           </motion.div>
 
