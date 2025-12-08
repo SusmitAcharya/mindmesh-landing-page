@@ -448,7 +448,7 @@ const Home = () => {
       </section>
 
       {/* Meet the Founders */}
-      <section id="founders" className="py-24 bg-muted/30">
+      <section id="founders" className="py-24 relative overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             className="text-center mb-16 max-w-2xl mx-auto"
@@ -495,7 +495,7 @@ const Home = () => {
       </section>
 
        {/* Testimonials Section */}
-      <section id="testimonials" className="py-24 relative overflow-hidden">
+      <section id="testimonials" className="py-24 bg-muted/30 relative overflow-hidden">
         <div className="absolute inset-0 gradient-mesh opacity-30" />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div 
