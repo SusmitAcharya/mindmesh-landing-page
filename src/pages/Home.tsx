@@ -93,7 +93,7 @@ const Home = () => {
       name: "Yogish Keswani",
       role: "Co-Founder & COO",
       image: founder2,
-      bio: "Passionate Coder Building AI solutions that make learning accessible and personalized for every student.",
+      bio: "Passionate coder, building AI solutions that make learning and growth accessible and personalized for everyone.",
       linkedin: "https://www.linkedin.com/in/yogishkeswani/",
       github: "https://github.com/Yogishkeswani",
     },
