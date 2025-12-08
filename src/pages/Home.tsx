@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { Sparkles, Brain, BookOpen, Lightbulb, Network, Mic, Linkedin, Github, Star, RectangleGoggles, School, UsersRound, Play, ImageIcon } from "lucide-react";
+import { Sparkles, Brain, BookOpen, Lightbulb, Network, Mic, Linkedin, Github, Star, RectangleGoggles, School, UsersRound, Play } from "lucide-react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
 import { motion, AnimatePresence } from "framer-motion";
@@ -8,6 +8,8 @@ import LoadingScreen from "@/components/LoadingScreen";
 import heroPhone from "@/assets/hero-phone-mockup.png";
 import founder1 from "@/assets/susmitacharya.png";
 import founder2 from "@/assets/yogishkeswani.png";
+import caseStudyProof1 from "@/assets/case-study-proof-1.png";
+import caseStudyProof2 from "@/assets/case-study-proof-2.png";
 
 const Home = () => {
   const [showLoading, setShowLoading] = useState(true);
@@ -130,6 +132,25 @@ const Home = () => {
       title: "The Future",
       description: "The long-term vision is to build the world’s most comprehensive end-to-end learning infrastructure that moves with a student across their academic life namely, planning, studying, creating, experimenting, and exposure to opportunities. We want to make a system that treats AI not as a multiplier for curiosity, agency, and opportunity. With the help of advanced sytems like MindMesh Labs, we want MindMesh to become not just another product or consolidater, but a platform for equalizing the oppurtunites for students, giving everyone a chance to dare to grow.",
     },
+  ];
+
+  const caseStudies = [
+    {
+      tag: "Saving the Percentage for ICSE",
+      title: "From Struggling to Thriving: A Last Minute Save",
+      name: "Bihan Chakraborty",
+      designation: "Class 11 Student, Auxilium Convent School, Barasat",
+      problem: "Rahul was overwhelmed by the academic pressure of Class 11 Science. With multiple subjects, coaching classes, and school assignments, he struggled to manage his time effectively. His grades dropped from 85% to 62% in just two months, and he was on the verge of giving up on his dream of pursuing engineering.",
+      solution: "Using Stratos Plan, we created a personalized study schedule that balanced his coaching and school workload. Stratos Tutor helped him understand complex Physics and Chemistry concepts through adaptive explanations. Obu provided daily motivation check-ins that kept him consistent even during tough weeks.",
+      impact: "Within 3 months, Rahul's grades improved from 62% to 88%. He secured a top 10 rank in his class and received recognition from his school principal. More importantly, he regained his confidence and is now actively preparing for JEE with a structured approach he learned through MindMesh.",
+      proofImages: [
+        { src: caseStudyProof1, alt: "Before & After Report Card" },
+        { src: caseStudyProof2, alt: "Recognition Certificate" }
+      ],
+      videoLink: "#",
+      videoLabel: "Watch Bihan's Story",
+      videoDescription: "Hear directly from Bihan about his journey with MindMesh"
+    }
   ];
 
   const testimonials = [
@@ -364,83 +385,85 @@ const Home = () => {
             </h2>
           </motion.div>
 
-          <motion.div
-            className="max-w-5xl mx-auto"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <div className="bg-card border border-border rounded-xl p-8 md:p-12 space-y-8">
-              {/* Header */}
-              <div className="border-b border-border pb-6">
-                <span className="inline-block px-3 py-1 bg-accent/10 text-accent text-xs font-medium rounded-full mb-4 border border-accent/30">
-                  Saving the Percentage for ICSE
-                </span>
-                <h3 className="text-2xl md:text-3xl font-semibold mb-2">
-                  From Struggling to Thriving: A Last Minute Save
-                </h3>
-                <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-muted-foreground">
-                  <span className="font-medium text-foreground">Bihan Chakraborty</span>
-                  <span className="hidden sm:inline">•</span>
-                  <span>Class 11 Student, Auxilium Convent School, Barasat</span>
-                </div>
-              </div>
+          <div className="max-w-5xl mx-auto space-y-12">
+            {caseStudies.map((study, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+              >
+                <div className="bg-card border border-border rounded-xl p-8 md:p-12 space-y-8">
+                  {/* Header */}
+                  <div className="border-b border-border pb-6">
+                    <span className="inline-block px-3 py-1 bg-accent/10 text-accent text-xs font-medium rounded-full mb-4 border border-accent/30">
+                      {study.tag}
+                    </span>
+                    <h3 className="text-2xl md:text-3xl font-semibold mb-2">
+                      {study.title}
+                    </h3>
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-muted-foreground">
+                      <span className="font-medium text-foreground">{study.name}</span>
+                      <span className="hidden sm:inline">•</span>
+                      <span>{study.designation}</span>
+                    </div>
+                  </div>
 
-              {/* Content Grid */}
-              <div className="grid md:grid-cols-3 gap-8">
-                {/* The Problem */}
-                <div className="space-y-3">
-                  <h4 className="text-lg font-semibold text-destructive/80">The Problem</h4>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    Rahul was overwhelmed by the academic pressure of Class 11 Science. With multiple subjects, coaching classes, and school assignments, he struggled to manage his time effectively. His grades dropped from 85% to 62% in just two months, and he was on the verge of giving up on his dream of pursuing engineering.
-                  </p>
-                </div>
+                  {/* Content Grid */}
+                  <div className="grid md:grid-cols-3 gap-8">
+                    <div className="space-y-3">
+                      <h4 className="text-lg font-semibold text-destructive/80">The Problem</h4>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        {study.problem}
+                      </p>
+                    </div>
 
-                {/* How We Bridged It */}
-                <div className="space-y-3">
-                  <h4 className="text-lg font-semibold text-primary">How MindMesh Bridged It</h4>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    Using Stratos Plan, we created a personalized study schedule that balanced his coaching and school workload. Stratos Tutor helped him understand complex Physics and Chemistry concepts through adaptive explanations. Obu provided daily motivation check-ins that kept him consistent even during tough weeks.
-                  </p>
-                </div>
+                    <div className="space-y-3">
+                      <h4 className="text-lg font-semibold text-primary">How MindMesh Bridged It</h4>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        {study.solution}
+                      </p>
+                    </div>
 
-                {/* The Impact */}
-                <div className="space-y-3">
-                  <h4 className="text-lg font-semibold text-accent">The Impact</h4>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    Within 3 months, Rahul's grades improved from 62% to 88%. He secured a top 10 rank in his class and received recognition from his school principal. More importantly, he regained his confidence and is now actively preparing for JEE with a structured approach he learned through MindMesh.
-                  </p>
-                </div>
-              </div>
+                    <div className="space-y-3">
+                      <h4 className="text-lg font-semibold text-accent">The Impact</h4>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        {study.impact}
+                      </p>
+                    </div>
+                  </div>
 
-              {/* Proof Images */}
-              <div className="grid sm:grid-cols-2 gap-6 pt-4">
-                <div className="aspect-video bg-muted/50 border border-border rounded-lg flex flex-col items-center justify-center text-muted-foreground">
-                  <ImageIcon className="w-10 h-10 mb-2 opacity-50" />
-                  <span className="text-sm">Before & After Report Card</span>
-                </div>
-                <div className="aspect-video bg-muted/50 border border-border rounded-lg flex flex-col items-center justify-center text-muted-foreground">
-                  <ImageIcon className="w-10 h-10 mb-2 opacity-50" />
-                  <span className="text-sm">Recognition Certificate</span>
-                </div>
-              </div>
+                  {/* Proof Images */}
+                  <div className="grid sm:grid-cols-2 gap-6 pt-4">
+                    {study.proofImages.map((image, imgIndex) => (
+                      <div key={imgIndex} className="aspect-video bg-muted/50 border border-border rounded-lg overflow-hidden">
+                        <img 
+                          src={image.src} 
+                          alt={image.alt} 
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    ))}
+                  </div>
 
-              {/* Video Link */}
-              <div className="pt-4 border-t border-border">
-                <a 
-                  href="#" 
-                  className="inline-flex items-center gap-3 px-6 py-3 bg-accent/10 border border-accent/30 rounded-lg text-accent hover:bg-accent/20 transition-colors group"
-                >
-                  <Play className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                  <span className="font-medium">Watch Bihan's Story</span>
-                </a>
-                <p className="text-xs text-muted-foreground mt-2">
-                  Hear directly from Bihan about his journey with MindMesh
-                </p>
-              </div>
-            </div>
-          </motion.div>
+                  {/* Video Link */}
+                  <div className="pt-4 border-t border-border">
+                    <a 
+                      href={study.videoLink} 
+                      className="inline-flex items-center gap-3 px-6 py-3 bg-accent/10 border border-accent/30 rounded-lg text-accent hover:bg-accent/20 transition-colors group"
+                    >
+                      <Play className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                      <span className="font-medium">{study.videoLabel}</span>
+                    </a>
+                    <p className="text-xs text-muted-foreground mt-2">
+                      {study.videoDescription}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
