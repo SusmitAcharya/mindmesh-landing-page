@@ -7,7 +7,7 @@ const Navigation = () => {
 
   const links = [
     { to: "#home", label: "Home" },
-    { to: "#features", label: "Features" },
+    { to: "#features", label: "Core Features" },
     { to: "#timeline", label: "Our Story" },
     { to: "#founders", label: "The Founders" },
     { to: "#testimonials", label: "Testimonials" },
