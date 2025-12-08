@@ -137,13 +137,13 @@ const Home = () => {
       text: "I used to feel overwhelmed every week because my assignments piled up and regular planners were too chaotic to keep up with everyday. Stratos Plan changed that. Its AI automatically organized my workload and showed me exactly what to focus on each day. School now feels manageable instead of chaotic.",
       rating: 5,
       name: "Sanjana Paik",
-      designation: "11th grader, ACS Barasat"
+      designation: "11th grader, ACS"
     },
     {
       text: "I wasted hours searching for explanations for concepts and every teacher had a different approach which made me confused on how to approach the problems. Stratos Tutor broke things down in a way I understood immediately and connected my previous learnings. It greatly helped me score well in my ICSE.",
       rating: 5,
       name: "Sagnik Ghosh",
-      designation: "10th grader, ACS Barasat"
+      designation: "10th grader, ACS"
     },
     {
       text: "I always thought opportunities were for rich students who were better connected. Opportunity Hub proved me wrong, and helped me get internships and take part in programs I never knew existed, and still keeps updating me on latest oppurtunities for high schoolers in low-resource contexts like me.",
