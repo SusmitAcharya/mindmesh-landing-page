@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { Sparkles, Brain, BookOpen, Lightbulb, Network, Mic, Linkedin, Github, Star } from "lucide-react";
+import { Sparkles, Brain, BookOpen, Lightbulb, Network, Mic, Linkedin, Github, Star, RectangleGoggles, School } from "lucide-react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
 import { motion, AnimatePresence } from "framer-motion";
@@ -30,45 +30,60 @@ const Home = () => {
   const features = [
     {
       icon: Brain,
-      title: "StratoPlan",
-      description: "AI-powered planner that adapts to your academic schedule and personal goals.",
+      title: "Stratos Plan",
+      description: "Ever felt like your schedule is managing you instead of the other way around? Stratos Plan adapts to your workload automatically, predicts crunch periods, and builds a plan that actually fits how students study—not how calendars think.",
     },
     {
       icon: BookOpen,
       title: "Stratos Tutor",
-      description: "Intelligent tutoring system with curated video content and personalized explanations.",
+      description: "Tired of jumping between ten videos and still not getting the concept? Stratos Tutor gives clean, personalized explanations backed by curated content, so students spend less time searching and more time understanding.",
     },
     {
       icon: Sparkles,
       title: "Obu",
-      description: "Your motivational AI companion keeping you inspired and focused on your journey.",
+      description: "Ever hit that wall where you know what to do but can’t push yourself to start? Obu keeps students grounded and consistent with small nudges, mindset tracking, and motivation that doesn’t feel artificial or overwhelming.",
     },
     {
       icon: Lightbulb,
-      title: "StratoNotes",
-      description: "Smart note-taking with AI-generated mind maps and study summaries.",
+      title: "Stratos Notes",
+      description: "Ever look at your notes and realize they’re just… chaos? Stratos Notes turns raw text into mind maps, summaries, and structured study materials so students can revise with clarity, not confusion.",
     },
     {
       icon: Network,
-      title: "OpportunityHub",
-      description: "Discover personalized internships, research opportunities, and academic programs.",
+      title: "Opportunity Hub",
+      description: "Ever feel like opportunities only reach the same few students? Opportunity Hub surfaces internships, research roles, and programs tailored to each learner—leveling access instead of leaving it to chance.",
     },
     {
       icon: Network,
-      title: "MeshConnect",
-      description: "Connect with fellow students, form study groups, and build your academic network.",
+      title: "Mesh Connect",
+      description: "Ever wanted a study group but didn’t know who to work with? Mesh Connect brings students together to collaborate, ask questions, and learn in a community that builds academic momentum.",
     },
     {
       icon: Mic,
-      title: "MindCast",
-      description: "Share and discover inspiring student stories, experiences, and success journeys.",
+      title: "Mind Cast",
+      description: "Ever wish students could share real experiences instead of polished highlights? Mind Cast gives them a space to express challenges, breakthroughs, and journeys—creating a culture of honest, peer-driven growth.",
+    },
+    {
+      icon: School,
+      title: "Mesh Link • Late 2026",
+      description: "Noticed how schools use five different systems that don’t talk to each other? Mesh Link will aim to unify announcements, tours, student workflows, and integrations into one clean layer that feels modern from day one, without needed expensive management teams, and in a system that is integrated with their own student's workflows, to reduce cognitive load.",
+    },
+    {
+      icon: RectangleGoggles,
+      title: "MindMesh Labs (VR/AR) • Late 2027",
+      description: "Ever tried learning a complex idea and thought, “I wish I could see this”? MindMesh Labs will bring concepts to life in immersive 3D spaces-labs, systems, and simulations students can explore instead of memorize. But unlike generic haptic feedback models, we will feature sensory neural signals with specifically designed VR headsets, currently under research, so that water feels like water and not mere vibration.",
+    },
+    {
+      icon: RectangleGoggles,
+      title: "Mixed Reality Classrooms (MR) • Late 2027",
+      description: "Ever seen a school that wants to teach science hands-on but lacks the equipment? Our MR labs will recreate full experiments and models, with the help of MindMesh Labs, without needing expensive physical infrastructure, giving low-resource classrooms the experiences they otherwise cannot access",
     },
   ];
 
   const founders = [
     {
       name: "Susmit Acharya",
-      role: "CEO and CTO",
+      role: "Co-Founder & CEO",
       image: founder1,
       bio: "Aspiring computer scientist and entrepreneur, passionate about leveraging AI to transform education and empower students worldwide.",
       linkedin: "https://www.linkedin.com/in/susmit-acharya/",
@@ -76,7 +91,7 @@ const Home = () => {
     },
     {
       name: "Yogish Keswani",
-      role: "CMO and CFO",
+      role: "Co-Founder & COO",
       image: founder2,
       bio: "Passionate Coder Building AI solutions that make learning accessible and personalized for every student.",
       linkedin: "https://www.linkedin.com/in/yogishkeswani/",
@@ -88,70 +103,65 @@ const Home = () => {
     {
       year: "2024",
       title: "The Beginning",
-      description: "MindMesh was born from a simple idea: students need a unified platform that brings together all aspects of academic life.",
+      description: "MindMesh started as a response to a basic problem we kept seeing in classrooms: students were drowning in scattered tools, none designed around how indian academic life works. The idea wasn’t to build another app. The goal was to build a system that treats student time, attention, and opportunity as things worth protecting and steamlines their productivity instead of them having to manage multiple tools and accounts and manually sync routines. The early sketches focused on one question: what would a unified learning workspace look like if it actually reduced cognitive load instead of adding to it?",
     },
     {
       year: "Early 2025",
       title: "Private Beta Launch",
-      description: "Released to a select group of 1,000+ students. Early feedback showed significant improvements in academic performance and organization.",
+      description: "We pushed out the first private beta in school communities, specifically in the Barasat region, to test our intitial features and gain feedback and analyze demand. The early cohort was because they represented the realest use cases: overloaded high schoolers, competitive exam aspirants, and students trying to balance academics with extracurriculars. Their feedback showed something important. When planning, tutoring, notes, and opportunities lived in one place, students became more organized and more confident in how they managed school.",
     },
     {
       year: "Mid-2025",
-      title: "Growing Impact",
-      description: "150+ students reported grade improvements. 50+ students discovered new internships and research opportunities through our platform.",
+      title: "Growth and Spread of Word",
+      description: "The impact metrics clarified why the product mattered. More than 150 students saw grade improvements after using Strato Plan and Stratos Tutor together. Over 50 discovered internships or local research roles through OpportunityHub. What this really meant was that access was the bottleneck, not ability, and MindMesh wasn’t just fixing productivity but widening the pathway to opportunities normally concentrated among a small set of students in high-income and high-connection areas.",
     },
     {
       year: "Present",
       title: "Today",
-      description: "Refining the platform based on real student feedback. Building towards our mid-2026 public launch with enhanced AI features.",
+      description: "The focus now is refinement before the public launch. Every iteration comes from live student feedback: where the planner still feels rigid, where the AI explanations need depth, where note-making fails to match how students actually think. The current work is less about adding features and more about adapting the system to feel more intuitive, supportive, and academically honest. We’re tuning the product for scale while keeping its original purpose intact.",
     },
     {
       year: "Mid-2026",
       title: "Public Launch",
-      description: "Opening MindMesh to students worldwide. Introducing advanced AI tutoring and expanded opportunity matching.",
+      description: "The public launch will signal the shift from a promising student tool to a global learning environment. Our vision here is straightforward: high-quality academic support should be accessible, not gated behind privilege. The first release will have an upgraded AI tutoring stack, and expanded opportunity matching will set the foundation for a broader ecosystem that schools and independent learners can rely on.",
     },
     {
       year: "2027+",
       title: "The Future",
-      description: "Transitioning to open-source. Launching VR/AR immersive learning experiences. Building dedicated MR lab facilities.",
+      description: "The long-term vision is to build the world’s most comprehensive end-to-end learning infrastructure that moves with a student across their academic life namely, planning, studying, creating, experimenting, and exposure to opportunities. We want to make a system that treats AI not as a multiplier for curiosity, agency, and opportunity. With the help of advanced sytems like MindMesh Labs, we want MindMesh to become not just another product or consolidater, but a platform for equalizing the oppurtunites for students, giving everyone a chance to dare to grow.",
     },
   ];
 
   const testimonials = [
     {
-      text: "MindMesh completely transformed how I manage my studies. The AI planner helped me improve my grades by 15% in just one semester!",
+      text: "I used to feel overwhelmed every week because my assignments piled up and regular planners were too chaotic to keep up with everyday. Stratos Plan changed that. Its AI automatically organized my workload and showed me exactly what to focus on each day. School now feels manageable instead of chaotic.",
       rating: 5,
-      photo: "https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah",
-      name: "Sarah Chen",
-      designation: "Computer Science Student, MIT"
+      name: "Sanjana Paik",
+      designation: "11th garder, ACS Barasat"
     },
     {
-      text: "The opportunity hub connected me with an amazing research position that I never would have found on my own. Game changer!",
+      text: "I wasted hours searching for explanations for concepts and every teacher had a different approach which made me confused on how to approach the problems. Stratos Tutor broke things down in a way I understood immediately and connected my previous learnings. It greatly helped me score well in my ICSE.",
       rating: 5,
-      photo: "https://api.dicebear.com/7.x/avataaars/svg?seed=Michael",
-      name: "Michael Rodriguez",
-      designation: "Biology Major, Stanford"
+      name: "Sagnik Ghosh",
+      designation: "10th grader, ACS Barasat"
     },
     {
-      text: "Obu keeps me motivated every single day. It's like having a personal coach who actually understands student life.",
+      text: "I always thought opportunities were for rich students who were better connected. Opportunity Hub proved me wrong, and helped me get internships and take part in programs I never knew existed, and still keeps updating me on latest oppurtunities for high schoolers in low-resource contexts like me.",
       rating: 4,
-      photo: "https://api.dicebear.com/7.x/avataaars/svg?seed=Emma",
-      name: "Emma Thompson",
-      designation: "Engineering Student, UC Berkeley"
+      name: "Avik Ganguly",
+      designation: "12th grader, TCMS"
     },
     {
-      text: "StratoNotes made studying so much more efficient. The AI-generated mind maps help me understand complex topics faster.",
+      text: "My notes used to be messy paragraphs that didn’t help when exams came, because teachers taught too fast to make proper segregated notes and I would be too tired after coming home to sit with them.. Stratos Notes converted them into clear mind maps and summaries quickly, and added missing concepts and flashcards, turning them into something I could actually follow.",
       rating: 5,
-      photo: "https://api.dicebear.com/7.x/avataaars/svg?seed=David",
-      name: "David Kim",
-      designation: "Medical Student, Johns Hopkins"
+      name: "Somdutta Majhi",
+      designation: "9th grader, TCMS"
     },
     {
-      text: "Best platform for student networking. I've connected with amazing people and formed study groups that actually work.",
+      text: "With Obu, I noticed a clear shift in my child’s mood and consistency. It brought balance by not giving genric AI genrated advice but by helping her understand her habits and optimize them to maximize productivity over 6 weeks.",
       rating: 4,
-      photo: "https://api.dicebear.com/7.x/avataaars/svg?seed=Priya",
       name: "Priya Sharma",
-      designation: "Business Student, Harvard"
+      designation: "Parent"
     }
   ];
 
@@ -225,7 +235,7 @@ const Home = () => {
                 transition={{ duration: 0.6, ease: "easeOut" }}
               >
                 <span className={`transition-colors duration-500 ${lightPhase >= 2 ? 'text-foreground/80' : 'text-muted-foreground/10'}`}>
-                  Your unified hub for academic and personal growth
+                  Your unified hub for growth and discovery
                 </span>
               </motion.p>
 
@@ -238,21 +248,9 @@ const Home = () => {
               >
                 <span className="text-muted-foreground">
                   An AI-powered student workspace bringing together planning, learning, 
-                  networking, and opportunities in one seamless platform.
+                  networking, and opportunities for underprivilged students in one seamless platform.
                 </span>
               </motion.p>
-
-              {/* Stats - lights up fourth (phase 4) */}
-              <motion.div 
-                className="flex flex-wrap gap-6 text-sm text-muted-foreground justify-center lg:justify-start pt-4"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: lightPhase >= 4 ? 1 : 0 }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
-              >
-                <p><span className="text-border">•</span><span>1,000+ Private Beta Users</span></p>
-                <p><span className="text-border">•</span><span>150+ Students Reported Grade Improvments</span></p>
-                <p><span className="text-border">•</span><span>50+ Students Reported Exposure to Internships and other Oppurtunities</span></p>
-              </motion.div>
             </div>
 
             {/* Phone mockup - lights up with phase 5 */}
@@ -450,11 +448,6 @@ const Home = () => {
                         </div>
 
                         <div className="flex flex-col items-center space-y-3">
-                          <img
-                            src={testimonial.photo}
-                            alt={testimonial.name}
-                            className="w-16 h-16 rounded-full border-2 border-accent/30"
-                          />
                           <div>
                             <p className="font-semibold text-foreground">{testimonial.name}</p>
                             <p className="text-sm text-muted-foreground">{testimonial.designation}</p>
