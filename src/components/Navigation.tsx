@@ -9,6 +9,7 @@ const Navigation = () => {
     { to: "#home", label: "Home" },
     { to: "#features", label: "Core Features" },
     { to: "#timeline", label: "Our Story" },
+    { to: "#case-studies", label: "Real Stories" },
     { to: "#founders", label: "The Founders" },
     { to: "#testimonials", label: "Testimonials" },
   ];
