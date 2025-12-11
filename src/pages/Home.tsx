@@ -140,13 +140,9 @@ const Home = () => {
       title: "From Struggling to Thriving: A Last Minute Save",
       name: "Bihan Chakraborty",
       designation: "Class 11 Student, Auxilium Convent School, Barasat",
-      problem: "Rahul was overwhelmed by the academic pressure of Class 11 Science. With multiple subjects, coaching classes, and school assignments, he struggled to manage his time effectively. His grades dropped from 85% to 62% in just two months, and he was on the verge of giving up on his dream of pursuing engineering.",
-      solution: "Using Stratos Plan, we created a personalized study schedule that balanced his coaching and school workload. Stratos Tutor helped him understand complex Physics and Chemistry concepts through adaptive explanations. Obu provided daily motivation check-ins that kept him consistent even during tough weeks.",
-      impact: "Within 3 months, Rahul's grades improved from 62% to 88%. He secured a top 10 rank in his class and received recognition from his school principal. More importantly, he regained his confidence and is now actively preparing for JEE with a structured approach he learned through MindMesh.",
-      proofImages: [
-        { src: caseStudyProof1, alt: "Before & After Report Card" },
-        { src: caseStudyProof2, alt: "Recognition Certificate" }
-      ],
+      problem: "Bihan was in the last 2 months before the ICSE and was overwhelmed, especially more because of a very low percentage in his pre-boards, in the 60s range. Concepts weren’t sticking. School teachers and Tuition Teachers explained topics differently, which only added to the confusion about which style to follow for the board examination. Instead of building clarity, study time became a cycle of searching, comparing explanations, and hoping one would finally make sense. Valuable hours were wasted on trying to decode the subject rather than learning it, and naturally the confidence dropped. The exam window was closing.",
+      solution: "Using Stratos Plan's AI, he could create a personalized study schedule that balanced his coaching and school workload. Stratos Tutor helped him understand complex concepts through adaptive explanations which connected previous learning styles rather than contradict it. Obu provided daily motivation checks that kept him consistent even during the initial tough weeks.",
+      impact: "Within 3 months, Bihan's grades improved from 62% to 88%. More importantly, he regained his confidence and is now actively preparing for competitive exams in India with a structured learning approach he gained through MindMesh.",
       videoLink: "#",
       videoLabel: "Watch Bihan's Story",
       videoDescription: "Hear directly from Bihan about his journey with MindMesh"
@@ -163,7 +159,7 @@ const Home = () => {
     {
       text: "I wasted hours searching for explanations for concepts and every teacher had a different approach which made me confused on how to approach the problems. Stratos Tutor broke things down in a way I understood immediately and connected my previous learnings. It greatly helped me score well in my ICSE.",
       rating: 5,
-      name: "Sagnik Ghosh",
+      name: "Bihan Chakraborty",
       designation: "Class 10, ACS"
     },
     {
@@ -269,7 +265,7 @@ const Home = () => {
               >
                 <span className="text-muted-foreground">
                   An AI-powered student workspace bringing together planning, learning, 
-                  networking, and opportunities for underprivilged students in one seamless platform.
+                  networking, and opportunities for underprivileged students in one seamless platform.
                 </span>
               </motion.p>
             </div>
@@ -432,19 +428,6 @@ const Home = () => {
                         {study.impact}
                       </p>
                     </div>
-                  </div>
-
-                  {/* Proof Images */}
-                  <div className="grid sm:grid-cols-2 gap-6 pt-4">
-                    {study.proofImages.map((image, imgIndex) => (
-                      <div key={imgIndex} className="aspect-video bg-muted/50 border border-border rounded-lg overflow-hidden">
-                        <img 
-                          src={image.src} 
-                          alt={image.alt} 
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                    ))}
                   </div>
 
                   {/* Video Link */}
