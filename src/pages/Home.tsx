@@ -160,7 +160,7 @@ const Home = () => {
       text: "I wasted hours searching for explanations for concepts and every teacher had a different approach which made me confused on how to approach the problems. Stratos Tutor broke things down in a way I understood immediately and connected my previous learnings. It greatly helped me score well in my ICSE.",
       rating: 5,
       name: "Bihan Chakraborty",
-      designation: "Class 10, ACS"
+      designation: "Class 11, ACS"
     },
     {
       text: "I always thought opportunities were for rich students who were better connected. Opportunity Hub proved me wrong, and helped me get internships and take part in programs I never knew existed, and still keeps updating me on latest oppurtunities for high schoolers in low-resource contexts like me.",
