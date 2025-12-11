@@ -532,7 +532,7 @@ const Home = () => {
                   <CarouselItem key={index}>
                     <Card className="border-border bg-card/50">
                       <CardContent className="p-8 flex flex-col items-center text-center space-y-6">
-                        <p className="text-lg text-foreground/90 italic">
+                        <p className="text-sm text-foreground/90 italic">
                           "{testimonial.text}"
                         </p>
                         
