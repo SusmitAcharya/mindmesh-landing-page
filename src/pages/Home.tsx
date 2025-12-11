@@ -142,7 +142,7 @@ const Home = () => {
       designation: "Class 11 Student, Auxilium Convent School, Barasat",
       problem: "Bihan was in the last 2 months before the ICSE and was overwhelmed, especially more because of a very low percentage in his pre-boards, in the 60s range. Concepts weren’t sticking. School teachers and Tuition Teachers explained topics differently, which only added to the confusion about which style to follow for the board examination. Instead of building clarity, study time became a cycle of searching, comparing explanations, and hoping one would finally make sense. Valuable hours were wasted on trying to decode the subject rather than learning it, and naturally the confidence dropped. The exam window was closing.",
       solution: "Using Stratos Plan's AI, he could create a personalized study schedule that balanced his coaching and school workload. Stratos Tutor helped him understand complex concepts through adaptive explanations which connected previous learning styles rather than contradict it. Obu provided daily motivation checks that kept him consistent even during the initial tough weeks.",
-      impact: "Within 3 months, Bihan's grades improved from 62% to 88%. More importantly, he regained his confidence and is now actively preparing for competitive exams in India with a structured learning approach he gained through MindMesh.",
+      impact: "Within 2 months, Bihan's grades improved from 62% to 88%. More importantly, he regained his confidence and is now actively preparing for competitive exams in India with a structured learning approach he gained through MindMesh.",
       videoLink: "#",
       videoLabel: "Watch Bihan's Story",
       videoDescription: "Hear directly from Bihan about his journey with MindMesh"
